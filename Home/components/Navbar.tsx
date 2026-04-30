@@ -28,7 +28,7 @@ export default function Navbar() {
           : 'bg-transparent py-5'
       }`}
     >
-      <div className="max-w-7xl mx-auto px-6 flex items-center gap-8">
+      <div className="max-w-7xl mx-auto px-6 flex items-center gap-4 sm:gap-8">
         {/* Logo */}
         <a href="#" className="flex items-center gap-3 flex-shrink-0 group">
           <div className="w-9 h-9 bg-primary flex items-center justify-content-center">
@@ -80,7 +80,7 @@ export default function Navbar() {
           open ? 'max-h-96' : 'max-h-0'
         } bg-canvas`}
       >
-        <nav className="flex flex-col px-6 py-6 gap-5">
+        <nav className="flex flex-col px-4 py-4 sm:px-6 sm:py-6 gap-5">
           {links.map((l) => (
             <a
               key={l.href}

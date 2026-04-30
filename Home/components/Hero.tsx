@@ -34,13 +34,13 @@ export default function Hero() {
       initial="hidden"
       animate="visible"
       variants={containerVariants}
-      className="relative min-h-screen flex flex-col justify-center pt-24 pb-16 overflow-hidden"
+      className="relative min-h-screen flex flex-col justify-center pt-16 pb-10 lg:pt-24 lg:pb-16 overflow-hidden"
     >
       <div className="max-w-7xl mx-auto px-6 w-full">
         <div className="grid lg:grid-cols-2 gap-12 lg:gap-16 items-start lg:items-center">
 
           {/* Left — copy */}
-          <div className="flex flex-col gap-10 ">
+          <div className="flex flex-col gap-6 lg:gap-10">
           
 
             <motion.h1 variants={itemVariants} className="font-display font-black leading-[0.95] tracking-tight lg:mt-8">
@@ -56,28 +56,28 @@ export default function Hero() {
               keeps every seat tuition-free.
             </motion.p>
 
-            <motion.div variants={itemVariants} className="flex flex-wrap gap-4">
+            <motion.div variants={itemVariants} className="flex flex-col sm:flex-row gap-4">
               <a
                 href="#get-involved"
-                className="inline-flex items-center gap-2 bg-secondary text-white font-semibold text-sm uppercase tracking-widest px-7 py-4 hover:bg-primary transition-colors duration-200"
+                className="flex items-center justify-center gap-2 bg-secondary text-white font-semibold text-sm uppercase tracking-widest px-5 py-3 sm:px-7 sm:py-4 hover:bg-primary transition-colors duration-200"
               >
                 Become a Mentor
                 <ArrowRight size={15} strokeWidth={2.5} />
               </a>
               <a
                 href="#programs"
-                className="inline-flex items-center gap-2 border-2 border-primary text-primary font-semibold text-sm uppercase tracking-widest px-7 py-4 hover:bg-primary hover:text-canvas transition-colors duration-200"
+                className="flex items-center justify-center gap-2 border-2 border-primary text-primary font-semibold text-sm uppercase tracking-widest px-5 py-3 sm:px-7 sm:py-4 hover:bg-primary hover:text-canvas transition-colors duration-200"
               >
                 See How You Can Help
               </a>
             </motion.div>
 
             {/* Stat bar */}
-            <motion.div variants={itemVariants} className="flex  w-fit mt-8 gap-y-4">
+            <motion.div variants={itemVariants} className="flex flex-wrap w-full mt-6 gap-y-2 lg:w-fit lg:mt-8">
               {stats.map((s) => {
                 const Icon = s.icon
                 return (
-                  <div key={s.label} className="hero-stat flex flex-col gap-1 px-7 py-5">
+                  <div key={s.label} className="hero-stat flex flex-col gap-1 px-4 py-3 sm:px-7 sm:py-5">
                     <div className="flex items-center gap-2">
                       <Icon size={14} className="text-secondary" strokeWidth={2} />
                       <span className="font-display font-black text-2xl text-secondary tracking-tight">
@@ -94,7 +94,7 @@ export default function Hero() {
           </div>
 
           {/* Right — image block */}
-          <div className="relative">
+          <div className="relative hidden lg:block">
             <motion.div
               initial={{ opacity: 0, scale: 0.97 }}
               animate={{ opacity: 1, scale: 1 }}

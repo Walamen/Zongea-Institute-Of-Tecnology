@@ -33,15 +33,17 @@ export default function HowItWorks() {
   return (
     <section id="how-it-works" className="bg-canvas">
       {/* Header */}
-      <div className="max-w-7xl mx-auto px-6 pt-24 pb-16 grid lg:grid-cols-[auto_1fr_1fr] gap-12 items-start">
-        <MotionWrapper type="fade">
-          <div className="pt-2">
+      
+      <div className="max-w-7xl mx-auto px-6 pt-14 pb-10 lg:pt-24 lg:pb-16 grid lg:grid-cols-[auto_1fr_1fr] gap-6 lg:gap-12 items-start">
+       
+        <MotionWrapper type="up">
+           <MotionWrapper type="fade">
+          <div className="pb-4 md:pb-8">
             <p className="text-2xs font-bold uppercase tracking-widest text-secondary whitespace-nowrap">
               The Ecosystem
             </p>
           </div>
         </MotionWrapper>
-        <MotionWrapper type="up">
           <h2 className="font-display font-black text-[clamp(34px,4vw,56px)] tracking-tight leading-[1.0]">
             One community.<br />Two continents.
           </h2>
@@ -55,13 +57,13 @@ export default function HowItWorks() {
       </div>
 
       {/* Steps grid */}
-      <div className="max-w-7xl mx-auto px-6 pb-20">
-        <div className="grid lg:grid-cols-4 gap-6">
+      <div className="max-w-7xl mx-auto px-6 pb-10 lg:pb-20">
+        <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-4 lg:gap-6">
           {steps.map((s, i) => {
             const Icon = s.icon
             return (
               <MotionWrapper key={s.num} type="up" delay={i * 0.1}>
-                <div className="border border-gray-300 rounded-lg p-8 flex flex-col gap-6 bg-white shadow-sm h-full">
+                <div className="border border-gray-300 rounded-lg p-5 sm:p-8 flex flex-col gap-6 bg-white shadow-sm h-full">
                   <div className="flex justify-between items-start">
                     <span className="font-display font-black text-xs tracking-widest bg-secondary text-white px-2.5 py-1 rounded">
                       {s.num}
@@ -80,18 +82,18 @@ export default function HowItWorks() {
       {/* Banner image */}
       <MotionWrapper type="scale">
         <div className="max-w-7xl mx-auto px-6 py-16">
-          <div className="relative overflow-hidden h-72 lg:h-96 rounded-lg">
+          <div className="relative overflow-hidden h-48 sm:h-72 lg:h-96 rounded-lg">
             <img
               src="https://images.unsplash.com/photo-1523240795612-9a054b0db644?w=1400&q=90&fit=crop"
               alt="Global community supporting students in Liberia"
               className="w-full h-full object-cover"
               style={{ filter: 'contrast(1.15) saturate(0.65) brightness(0.45)' }}
             />
-            <div className="absolute inset-0 flex flex-col justify-center px-12 lg:px-20">
+            <div className="absolute inset-0 flex flex-col justify-center px-6 sm:px-12 lg:px-20">
               <p className="font-display font-black text-canvas text-[clamp(20px,3vw,36px)] max-w-2xl leading-tight tracking-tight">
                 "We do not just teach technology. We build a global community that teaches together."
               </p>
-              <p className="mt-5 text-2xs font-semibold uppercase tracking-widest text-gold">
+              <p className="mt-3 sm:mt-5 text-2xs font-semibold uppercase tracking-widest text-gold">
                 — Zongea Institute of Technology
               </p>
             </div>

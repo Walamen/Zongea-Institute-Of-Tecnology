@@ -36,7 +36,7 @@ export default function FundingCycle() {
       <div className="max-w-7xl mx-auto px-6 pt-24 pb-20">
 
         {/* Section header */}
-        <div className="grid lg:grid-cols-[auto_1fr_1fr] gap-12 items-start mb-16">
+        <div className="grid lg:grid-cols-[auto_1fr_1fr] gap-6 lg:gap-12 items-start mb-8 lg:mb-16">
           <MotionWrapper type="fade">
             <div className="pt-2">
               <p className="text-2xs font-bold uppercase tracking-widest text-secondary whitespace-nowrap">
@@ -65,7 +65,7 @@ export default function FundingCycle() {
             return (
               <React.Fragment key={p.num}>
                 <MotionWrapper type="up" delay={i * 0.12} className="flex-1">
-                  <div className={`${p.bg} text-white rounded-lg p-8 flex flex-col gap-5 min-h-[260px] h-full`}>
+                  <div className={`${p.bg} text-white rounded-lg p-5 sm:p-8 flex flex-col gap-5 min-h-0 sm:min-h-[260px] h-full`}>
                     <div className="flex items-start justify-between">
                       <Icon size={34} strokeWidth={1.5} className="opacity-90" />
                       <span className="font-display font-black text-xs tracking-widest opacity-30">
@@ -96,7 +96,7 @@ export default function FundingCycle() {
 
         {/* CTA banner */}
         <MotionWrapper type="up" delay={0.3}>
-          <div className="mt-10 border border-slate-300 rounded-lg p-8 lg:p-10 flex flex-col lg:flex-row items-start lg:items-center justify-between gap-6">
+          <div className="mt-10 border border-slate-300 rounded-lg p-5 sm:p-8 lg:p-10 flex flex-col lg:flex-row items-start lg:items-center justify-between gap-4 sm:gap-6">
             <p className="font-display font-bold text-[clamp(16px,2vw,22px)] text-primary max-w-2xl leading-snug">
               "Every mentor hour, every partnership, every donation keeps a seat free in Liberia."
             </p>

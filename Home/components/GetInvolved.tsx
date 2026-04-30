@@ -45,7 +45,7 @@ export default function GetInvolved() {
   return (
     <section id="get-involved" className="bg-parchment">
       {/* Header */}
-      <div className="max-w-7xl mx-auto px-6 pt-24 pb-16 grid lg:grid-cols-[auto_1fr_1fr] gap-12 items-start">
+      <div className="max-w-7xl mx-auto px-6 pt-14 pb-10 lg:pt-24 lg:pb-16 grid lg:grid-cols-[auto_1fr_1fr] gap-6 lg:gap-12 items-start">
         <MotionWrapper type="fade">
           <div className="pt-2">
             <p className="text-2xs font-bold uppercase tracking-widest text-secondary whitespace-nowrap">
@@ -68,17 +68,17 @@ export default function GetInvolved() {
 
       {/* Option cards */}
       <div className="max-w-7xl mx-auto px-6 py-16">
-        <div className="grid sm:grid-cols-2 lg:grid-cols-4 gap-6 mb-12">
+        <div className="grid grid-cols-1 lg:grid-cols-4 gap-6 mb-12">
           {options.map((o, i) => {
             const Icon = o.icon
             return (
               <MotionWrapper key={o.title} type="up" delay={i * 0.08}>
-                <div className={`${o.cls} border border-gray-300 rounded-lg p-8 flex flex-col gap-5 min-h-[340px] shadow-sm relative overflow-hidden`}>
+                <div className={`${o.cls} border border-gray-300 rounded-lg p-5 sm:p-8 flex flex-col gap-5 min-h-0 sm:min-h-[340px] shadow-sm relative overflow-hidden`}>
                   {/* Badge */}
-                  <span className="absolute top-4 right-4 text-2xs font-bold uppercase tracking-widest bg-white/20 px-2 py-1 rounded">
+                  <span className="hidden sm:block absolute top-4 right-4 text-2xs font-bold uppercase tracking-widest bg-white/20 px-2 py-1 rounded">
                     {o.badge}
                   </span>
-                  <Icon size={28} strokeWidth={1.5} className="mt-6" />
+                  <Icon size={28} strokeWidth={1.5} className="mt-3 sm:mt-6" />
                   <h3 className="font-display font-bold text-xl tracking-tight leading-snug">{o.title}</h3>
                   <p className="text-sm font-light leading-relaxed opacity-80 flex-1">{o.desc}</p>
                   <a
@@ -97,8 +97,8 @@ export default function GetInvolved() {
         {/* Donate strip — featured */}
         <MotionWrapper type="up">
           <div className="mt-20 bg-primary rounded-lg overflow-hidden">
-            <div className="flex flex-col lg:flex-row items-start lg:items-center justify-between gap-8 p-10 lg:p-12">
-              <div className="flex items-start gap-5">
+            <div className="flex flex-col lg:flex-row items-start lg:items-center justify-between gap-4 sm:gap-8 p-6 sm:p-10 lg:p-12">
+              <div className="flex flex-col  items-start gap-5">
                 <div className="flex-shrink-0 w-12 h-12 bg-secondary rounded-lg flex items-center justify-center">
                   <Heart size={22} className="text-white" strokeWidth={1.5} />
                 </div>
@@ -112,7 +112,7 @@ export default function GetInvolved() {
                     who could never afford to pay.
                   </p>
                   {/* Impact breakdown */}
-                  <div className="flex flex-wrap gap-6 mt-5">
+                  <div className="flex flex-col sm:flex-row flex-wrap gap-3 sm:gap-6 mt-5">
                     {[
                       { amount: '$25', impact: 'funds a student\'s internet for a month' },
                       { amount: '$100', impact: 'covers curriculum materials for a cohort' },

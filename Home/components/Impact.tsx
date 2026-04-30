@@ -77,8 +77,8 @@ function StatCounter({ value, suffix, label, skipCount }: { value: number; suffi
   }, [value, skipCount])
 
   return (
-    <div className="flex flex-col items-center gap-2 py-10 px-6 text-center">
-      <span className="font-display font-black text-4xl text-secondary tracking-tight">
+    <div className="flex flex-col items-center gap-2 py-6 px-3 sm:py-10 sm:px-6 text-center">
+      <span className="font-display font-black text-2xl sm:text-4xl text-secondary tracking-tight">
         <span ref={numRef}>{skipCount ? '' : '0'}</span>
         {suffix}
       </span>
@@ -93,7 +93,7 @@ export default function Impact() {
       {/* Stats bar */}
       <div className="bg-primary">
         <div className="max-w-7xl mx-auto px-6">
-          <div className="grid grid-cols-3 lg:grid-cols-6">
+          <div className="grid grid-cols-2 sm:grid-cols-3 lg:grid-cols-6">
             {stats.map((s) => (
               <StatCounter key={s.label} {...s} />
             ))}
@@ -103,7 +103,7 @@ export default function Impact() {
 
       {/* Testimonials */}
       <div className="max-w-7xl mx-auto px-6">
-        <div className="pt-24 pb-16 grid lg:grid-cols-[auto_1fr] gap-12 items-baseline">
+        <div className="pt-14 pb-10 lg:pt-24 lg:pb-16 grid lg:grid-cols-[auto_1fr] gap-6 lg:gap-12 items-baseline">
           <MotionWrapper type="fade"><div className="pt-2">
             <p className="text-2xs font-bold uppercase tracking-widest text-secondary whitespace-nowrap">Student Voices</p>
           </div></MotionWrapper>
@@ -115,7 +115,7 @@ export default function Impact() {
         <div className="grid lg:grid-cols-3 gap-6 pb-20">
           {testimonials.map((t, i) => (
             <MotionWrapper key={t.name} type="up" delay={i * 0.1}>
-              <div className="border border-gray-300 rounded-lg p-10 flex flex-col gap-6 bg-white hover:shadow-md transition-all duration-200">
+              <div className="border border-gray-300 rounded-lg p-5 sm:p-10 flex flex-col gap-6 bg-white hover:shadow-md transition-all duration-200">
               <Quote size={28} className="text-secondary" strokeWidth={1.5} />
               <p className="text-base font-light text-stone leading-relaxed italic flex-1">
                 {t.quote}

@@ -28,7 +28,7 @@ export default function Footer() {
       <div className="max-w-7xl mx-auto px-6">
 
         {/* Top row */}
-        <div className="grid lg:grid-cols-[360px_1fr] gap-16 py-20">
+        <div className="grid lg:grid-cols-[360px_1fr] gap-8 lg:gap-16 py-12 lg:py-20">
 
           {/* Brand */}
           <div className="flex flex-col gap-6">
@@ -72,7 +72,7 @@ export default function Footer() {
           </div>
 
           {/* Nav columns */}
-          <div className="grid grid-cols-3 gap-10">
+          <div className="grid grid-cols-1 sm:grid-cols-3 gap-6 sm:gap-10">
             {Object.entries(nav).map(([section, items]) => (
               <div key={section}>
                 <h4 className="text-2xs font-bold uppercase tracking-widest text-secondary mb-5">{section}</h4>

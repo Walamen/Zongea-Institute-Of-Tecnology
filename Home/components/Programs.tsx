@@ -70,7 +70,7 @@ export default function Programs() {
     <section id="programs">
       {/* Section header */}
       <div className="bg-canvas">
-        <div className="max-w-7xl mx-auto px-6 pt-24 pb-16 grid lg:grid-cols-[auto_1fr_1fr] gap-12 items-start">
+        <div className="max-w-7xl mx-auto px-6 pt-14 pb-10 lg:pt-24 lg:pb-16 grid lg:grid-cols-[auto_1fr_1fr] gap-6 lg:gap-12 items-start">
           <MotionWrapper type="fade">
             <div className="pt-2">
               <p className="text-2xs font-bold uppercase tracking-widest text-secondary whitespace-nowrap">
@@ -98,13 +98,13 @@ export default function Programs() {
         const Icon = p.icon
         return (
           <div key={p.index} className={`${p.theme.bg}`}>
-            <div className="max-w-7xl mx-auto px-6 py-20">
-              <div className={`grid lg:grid-cols-2 gap-12 items-center ${p.flip ? 'lg:[&>*:first-child]:order-2' : ''}`}>
+            <div className="max-w-7xl mx-auto px-6 py-10 sm:py-16 lg:py-20">
+              <div className={`grid lg:grid-cols-2 gap-6 lg:gap-12 items-center ${p.flip ? 'lg:[&>*:first-child]:order-2' : ''}`}>
 
                 {/* Image */}
                 <MotionWrapper type={p.flip ? 'right' : 'left'}>
                   <div className="relative">
-                    <div className="overflow-hidden aspect-[4/3] rounded-lg">
+                    <div className="overflow-hidden aspect-[16/9] sm:aspect-[4/3] rounded-lg">
                       <img
                         src={p.image}
                         alt={p.alt}

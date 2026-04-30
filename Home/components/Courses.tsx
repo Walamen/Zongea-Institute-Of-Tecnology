@@ -37,7 +37,7 @@ export default function Courses() {
   return (
     <section id="courses" className="bg-parchment">
       {/* Header */}
-      <div className="max-w-7xl mx-auto px-6 pt-24 pb-16 grid lg:grid-cols-[auto_1fr_auto] gap-12 items-center">
+      <div className="max-w-7xl mx-auto px-6 pt-14 pb-10 lg:pt-24 lg:pb-16 grid lg:grid-cols-[auto_1fr_auto] gap-6 lg:gap-12 items-center">
         <MotionWrapper type="fade"><div className="pt-2">
           <p className="text-2xs font-bold uppercase tracking-widest text-secondary whitespace-nowrap">What You Fund</p>
         </div></MotionWrapper>
@@ -50,7 +50,7 @@ export default function Courses() {
             across four in-demand tech disciplines — at no cost to the student.
           </p>
         </MotionWrapper>
-        <MotionWrapper type="fade" delay={0.1}><div className="bg-secondary px-6 py-4 text-center self-center rounded-lg">
+        <MotionWrapper type="fade" delay={0.1}><div className="bg-secondary px-4 py-3 sm:px-6 sm:py-4 text-center self-center rounded-lg">
           <p className="text-2xs font-bold uppercase tracking-widest text-canvas">100% Free</p>
           <p className="text-xs text-canvas/60 mt-1 font-light">Funded by our global community</p>
         </div></MotionWrapper>
@@ -63,17 +63,17 @@ export default function Courses() {
             const Icon = c.icon
             return (
               <MotionWrapper key={c.title} type="up" delay={i * 0.08}>
-                <div className="border border-gray-300 rounded-lg bg-white flex flex-col group hover:-translate-y-1 transition-transform duration-300 shadow-sm overflow-hidden h-[420px]">
+                <div className="border border-gray-300 rounded-lg bg-white flex flex-col group hover:-translate-y-1 transition-transform duration-300 shadow-sm overflow-hidden h-[380px] sm:h-[420px]">
 
                   {/* Image — fixed height */}
-                  <div className="h-[200px] flex-shrink-0 overflow-hidden relative">
+                  <div className="h-[160px] sm:h-[200px] flex-shrink-0 overflow-hidden relative">
                     <img
                       src={c.image}
                       alt={c.title}
                       className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500"
                       style={{ filter: 'contrast(1.1) saturate(0.8)' }}
                     />
-                    <div className="absolute bottom-3 left-3 bg-white p-1.5 rounded">
+                    <div className="hidden sm:flex absolute bottom-3 left-3 bg-white p-1.5 rounded">
                       <Icon size={16} className="text-secondary" strokeWidth={2} />
                     </div>
                   </div>
