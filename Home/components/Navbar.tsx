@@ -37,8 +37,8 @@ export default function Navbar() {
             </span>
           </div>
           <div className="leading-tight">
-            <p className="font-display font-bold text-xs uppercase tracking-widest text-primary">Zongea</p>
-            <p className="text-2xs uppercase tracking-wider text-stone">Institute of Technology</p>
+            <p className={`font-display font-bold text-xs uppercase tracking-widest transition-colors duration-300 ${scrolled ? 'text-primary' : 'text-white'}`}>Zongea</p>
+            <p className={`text-2xs uppercase tracking-wider transition-colors duration-300 ${scrolled ? 'text-stone' : 'text-white/60'}`}>Institute of Technology</p>
           </div>
         </a>
 
@@ -48,7 +48,7 @@ export default function Navbar() {
             <a
               key={l.href}
               href={l.href}
-              className="text-2xs font-semibold uppercase tracking-widest text-stone hover:text-primary transition-colors duration-200"
+              className={`text-2xs font-semibold uppercase tracking-widest transition-colors duration-200 ${scrolled ? 'text-stone hover:text-primary' : 'text-white/70 hover:text-white'}`}
             >
               {l.label}
             </a>
@@ -67,7 +67,7 @@ export default function Navbar() {
         {/* Mobile burger */}
         <button
           onClick={() => setOpen(!open)}
-          className="lg:hidden ml-auto text-primary"
+          className={`lg:hidden ml-auto transition-colors duration-300 ${scrolled ? 'text-primary' : 'text-white'}`}
           aria-label="Toggle navigation"
         >
           {open ? <X size={22} /> : <Menu size={22} />}

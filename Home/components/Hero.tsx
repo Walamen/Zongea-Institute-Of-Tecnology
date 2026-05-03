@@ -1,144 +1,169 @@
 'use client'
-import { motion } from 'framer-motion'
-import { ArrowRight, Users, BookOpen, Globe2 } from 'lucide-react'
+import { useState, useEffect } from 'react'
+import { motion, AnimatePresence } from 'framer-motion'
+import { ArrowRight } from 'lucide-react'
 
-const stats = [
-  { value: '300+', label: 'Lives Changed', icon: Users },
-  { value: '100%', label: 'Free for Students', icon: BookOpen },
-  { value: 'Global', label: 'Online Programs', icon: Globe2 },
+const slides = [
+  {
+    image: 'https://images.unsplash.com/photo-1522202176988-66273c2fd55f?w=1400&q=90&fit=crop',
+    label: 'Online Mentoring',
+    headline: 'Share your\nexpertise.',
+  },
+  {
+    image: 'https://images.unsplash.com/photo-1571260899304-425eee4c7efc?w=1400&q=90&fit=crop',
+    label: 'Free for Students',
+    headline: 'Zero tuition.\nWorld-class skills.',
+  },
+  {
+    image: 'https://images.unsplash.com/photo-1531482615713-2afd69097998?w=1400&q=90&fit=crop',
+    label: 'Global Community',
+    headline: 'One mission.\nTwo continents.',
+  },
 ]
 
-const containerVariants = {
-  hidden: { opacity: 0 },
-  visible: {
-    opacity: 1,
-    transition: {
-      staggerChildren: 0.08,
-      delayChildren: 0.1,
-    },
-  },
-}
-
-const itemVariants = {
-  hidden: { opacity: 0, y: 20 },
-  visible: {
-    opacity: 1,
-    y: 0,
-    transition: { duration: 0.5, ease: [0.25, 0.46, 0.45, 0.94] as [number, number, number, number] },
-  },
-}
+const stats = [
+  { value: '300+', label: 'Lives Changed' },
+  { value: '100%', label: 'Tuition Free' },
+  { value: '4', label: 'Tech Disciplines' },
+  { value: 'Global', label: 'Online Programs' },
+]
 
 export default function Hero() {
+  const [current, setCurrent] = useState(0)
+
+  useEffect(() => {
+    const timer = setInterval(() => {
+      setCurrent((prev) => (prev + 1) % slides.length)
+    }, 5000)
+    return () => clearInterval(timer)
+  }, [])
+
   return (
-    <motion.section
-      initial="hidden"
-      animate="visible"
-      variants={containerVariants}
-      className="relative min-h-screen flex flex-col justify-center pt-16 pb-10 lg:pt-24 lg:pb-16 overflow-hidden"
-    >
-      <div className="max-w-7xl mx-auto px-6 w-full">
-        <div className="grid lg:grid-cols-2 gap-12 lg:gap-16 items-start lg:items-center">
+    <section className="relative h-screen flex flex-col overflow-hidden">
 
-          {/* Left — copy */}
-          <div className="flex flex-col gap-6 lg:gap-10">
-          
+      {/* Background slideshow */}
+      <AnimatePresence initial={false}>
+        <motion.div
+          key={current}
+          className="absolute inset-0"
+          initial={{ opacity: 0 }}
+          animate={{ opacity: 1 }}
+          exit={{ opacity: 0 }}
+          transition={{ duration: 1.2, ease: 'easeInOut' }}
+        >
+          <img
+            src={slides[current].image}
+            alt=""
+            className="w-full h-full object-cover"
+            style={{ filter: 'contrast(1.05) saturate(0.55) brightness(0.8)' }}
+          />
+          <div className="absolute inset-0 bg-gradient-to-b from-primary/85 via-primary/55 to-primary/90" />
+        </motion.div>
+      </AnimatePresence>
 
-            <motion.h1 variants={itemVariants} className="font-display font-black leading-[0.95] tracking-tight lg:mt-8">
-              <span className="block text-[clamp(55px,7vw,84px)] text-primary">Mentor.</span>
-              <span className="block my-2 text-[clamp(55px,6vw,84px)] text-secondary">Tutor.</span>
-              <span className="block text-[clamp(55px,5.3vw,75px)] text-primary">Partner.</span>
-            </motion.h1>
+      {/* Main content */}
+      <div className="relative flex-1 flex flex-col justify-center px-6 pt-20 pb-4 sm:pt-28 sm:pb-8 max-w-7xl mx-auto w-full min-h-0">
 
-            <motion.p variants={itemVariants} className="text-lg font-light text-stone leading-relaxed max-w-lg">
-              Join professionals from the US and around the world powering{' '}
-              <strong className="font-semibold text-primary">100% free tech education</strong> in
-              Liberia. Mentor or tutor entirely online, partner as an organisation — your support
-              keeps every seat tuition-free.
-            </motion.p>
-
-            <motion.div variants={itemVariants} className="flex flex-col sm:flex-row gap-4">
-              <a
-                href="#get-involved"
-                className="flex items-center justify-center gap-2 bg-secondary text-white font-semibold text-sm uppercase tracking-widest px-5 py-3 sm:px-7 sm:py-4 hover:bg-primary transition-colors duration-200"
-              >
-                Become a Mentor
-                <ArrowRight size={15} strokeWidth={2.5} />
-              </a>
-              <a
-                href="#programs"
-                className="flex items-center justify-center gap-2 border-2 border-primary text-primary font-semibold text-sm uppercase tracking-widest px-5 py-3 sm:px-7 sm:py-4 hover:bg-primary hover:text-canvas transition-colors duration-200"
-              >
-                See How You Can Help
-              </a>
-            </motion.div>
-
-            {/* Stat bar */}
-            <motion.div variants={itemVariants} className="flex flex-wrap w-full mt-6 gap-y-2 lg:w-fit lg:mt-8">
-              {stats.map((s) => {
-                const Icon = s.icon
-                return (
-                  <div key={s.label} className="hero-stat flex flex-col gap-1 px-4 py-3 sm:px-7 sm:py-5">
-                    <div className="flex items-center gap-2">
-                      <Icon size={14} className="text-secondary" strokeWidth={2} />
-                      <span className="font-display font-black text-2xl text-secondary tracking-tight">
-                        {s.value}
-                      </span>
-                    </div>
-                    <span className="text-2xs uppercase tracking-widest text-stone font-medium">
-                      {s.label}
-                    </span>
-                  </div>
-                )
-              })}
-            </motion.div>
-          </div>
-
-          {/* Right — image block */}
-          <div className="relative hidden lg:block">
-            <motion.div
-              initial={{ opacity: 0, scale: 0.97 }}
-              animate={{ opacity: 1, scale: 1 }}
-              transition={{ duration: 0.8, delay: 0.3, ease: [0.25, 0.46, 0.45, 0.94] }}
-              className="relative overflow-hidden aspect-[4/5]"
-            >
-              <img
-                src="https://images.unsplash.com/photo-1531482615713-2afd69097998?w=900&q=90&fit=crop"
-                alt="Global professionals mentoring tech students online"
-                className="w-full h-full object-cover"
-                style={{ filter: 'contrast(1.1) saturate(0.85)' }}
-              />
-              <div className="absolute inset-x-0 bottom-0 h-1/3 bg-gradient-to-t from-ink/60 to-transparent" />
-            </motion.div>
-
-            {/* Floating card A — top right */}
-            <motion.div
-              initial={{ opacity: 0, x: 30, y: -10 }}
-              animate={{ opacity: 1, x: 0, y: 0 }}
-              transition={{ duration: 0.5, delay: 0.5, ease: [0.25, 0.46, 0.45, 0.94] }}
-              className="absolute top-0 right-0 bg-parchment p-4 min-w-[180px] border border-gray-300 shadow-sm"
-            >
-             <div className="inline-flex items-center gap-3 bg-parchment px-4 py-2 w-fit">
-              <span className="w-2 h-2 rounded-full bg-secondary flex-shrink-0" />
-              <span className="text-2xs font-semibold uppercase tracking-widest text-stone">
-                Online Programs — US &amp; Worldwide
-              </span>
+        {/* Slide label + headline — animate per slide */}
+        <AnimatePresence mode="wait">
+          <motion.div
+            key={current}
+            initial={{ opacity: 0, y: 24 }}
+            animate={{ opacity: 1, y: 0 }}
+            exit={{ opacity: 0, y: -16 }}
+            transition={{ duration: 0.55, ease: [0.25, 0.46, 0.45, 0.94] }}
+          >
+            <div className="flex items-center gap-3 mb-3 sm:mb-5">
+              <span className="w-6 h-px bg-secondary flex-shrink-0" />
+              <p className="text-2xs font-bold uppercase tracking-widest text-secondary">
+                {slides[current].label}
+              </p>
             </div>
-            </motion.div>
 
-            {/* Floating card B — bottom left */}
-            <motion.div
-              initial={{ opacity: 0, x: -30, y: 10 }}
-              animate={{ opacity: 1, x: 0, y: 0 }}
-              transition={{ duration: 0.5, delay: 0.6, ease: [0.25, 0.46, 0.45, 0.94] }}
-              className="absolute bottom-0 left-0 bg-secondary-light p-4 min-w-[190px] shadow-sm"
-            >
-              <p className="font-display font-bold text-sm text-primary">Your support →</p>
-              <p className="text-xs text-stone mt-1 font-light">Free education in Liberia</p>
-            </motion.div>
-          </div>
+            <h1 className="font-display font-black text-canvas leading-[1.0] tracking-tight text-[clamp(28px,5vw,72px)] whitespace-pre-line mb-3 sm:mb-5">
+              {slides[current].headline}
+            </h1>
+          </motion.div>
+        </AnimatePresence>
 
+        {/* Static subtext + CTAs */}
+        <motion.p
+          initial={{ opacity: 0 }}
+          animate={{ opacity: 1 }}
+          transition={{ delay: 0.3, duration: 0.6 }}
+          className="text-sm sm:text-lg font-light text-white/65 leading-relaxed max-w-lg mb-5 sm:mb-8"
+        >
+          Join professionals worldwide powering{' '}
+          <strong className="font-semibold text-white/90">100% free tech education</strong>{' '}
+          in Liberia — mentor, tutor, or partner entirely online.
+        </motion.p>
+
+        <motion.div
+          initial={{ opacity: 0, y: 10 }}
+          animate={{ opacity: 1, y: 0 }}
+          transition={{ delay: 0.45, duration: 0.5 }}
+          className="flex flex-col sm:flex-row gap-3"
+        >
+          <a
+            href="#get-involved"
+            className="flex items-center justify-center gap-2 bg-secondary text-white font-semibold text-sm uppercase tracking-widest px-8 py-4 hover:bg-secondary-light transition-colors duration-200"
+          >
+            Become a Mentor
+            <ArrowRight size={15} strokeWidth={2.5} />
+          </a>
+          <a
+            href="#programs"
+            className="flex items-center justify-center gap-2 border border-white/30 text-white font-semibold text-sm uppercase tracking-widest px-8 py-4 hover:bg-white/10 hover:border-white/60 transition-colors duration-200"
+          >
+            See How You Can Help
+          </a>
+        </motion.div>
+
+        {/* Slide indicators */}
+        <div className="flex items-center gap-2 mt-5 sm:mt-10">
+          {slides.map((_, i) => (
+            <button
+              key={i}
+              onClick={() => setCurrent(i)}
+              className={`transition-all duration-300 rounded-full ${
+                i === current
+                  ? 'w-8 h-2 bg-secondary'
+                  : 'w-2 h-2 bg-white/25 hover:bg-white/50'
+              }`}
+              aria-label={`Go to slide ${i + 1}`}
+            />
+          ))}
         </div>
       </div>
-    </motion.section>
+
+      {/* Stats bar — pinned to bottom */}
+      <div className="relative border-t border-white/10 bg-primary/60 backdrop-blur-sm">
+        <div className="max-w-7xl mx-auto px-6">
+          <div className="grid grid-cols-2 sm:grid-cols-4">
+            {stats.map((s, i) => (
+              <motion.div
+                key={s.label}
+                initial={{ opacity: 0, y: 10 }}
+                animate={{ opacity: 1, y: 0 }}
+                transition={{ delay: 0.5 + i * 0.08, duration: 0.5 }}
+                className={`flex flex-col gap-1 py-4 sm:py-6 px-4 sm:px-8
+                  ${i % 2 !== 0 ? 'border-l border-white/10 sm:border-l-0' : ''}
+                  ${i < 3 ? 'sm:border-r sm:border-white/10' : ''}
+                  ${i < 2 ? 'border-b border-white/10 sm:border-b-0' : ''}
+                `}
+              >
+                <span className="font-display font-black text-2xl sm:text-3xl text-secondary tracking-tight">
+                  {s.value}
+                </span>
+                <span className="text-2xs uppercase tracking-widest text-white/50 font-medium">
+                  {s.label}
+                </span>
+              </motion.div>
+            ))}
+          </div>
+        </div>
+      </div>
+
+    </section>
   )
 }

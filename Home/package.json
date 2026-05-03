@@ -3,7 +3,7 @@
   "version": "0.1.0",
   "private": true,
   "scripts": {
-    "dev": "next dev --turbo -p 3000 --hostname 192.168.1.181", 
+    "dev": "next dev --turbo -p 3000 --hostname localhost", 
     "build": "next build",
     "start": "next start"
   },
