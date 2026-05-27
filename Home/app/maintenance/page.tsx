@@ -10,7 +10,7 @@ export const metadata: Metadata = {
 
 export default function MaintenancePage() {
   return (
-    <div className="relative h-screen flex flex-col bg-canvas overflow-hidden">
+    <div className="relative h-full flex flex-col bg-canvas overflow-hidden">
 
       {/* Subtle grid background */}
       <div
