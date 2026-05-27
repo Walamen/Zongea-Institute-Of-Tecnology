@@ -1,0 +1,429 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Design Approaches</title>
+<link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;600;700;800;900&family=Inter:wght@300;400;500;600&display=swap" rel="stylesheet">
+<style>
+  * { box-sizing: border-box; margin: 0; padding: 0; }
+  body {
+    font-family: 'Inter', sans-serif;
+    background: #1a1a2e;
+    color: #f0ede8;
+    padding: 32px 24px 48px;
+    min-height: 100vh;
+  }
+  .page-title {
+    font-family: 'Plus Jakarta Sans', sans-serif;
+    font-size: 13px;
+    font-weight: 700;
+    letter-spacing: 0.15em;
+    text-transform: uppercase;
+    color: #D4900A;
+    margin-bottom: 8px;
+  }
+  .page-subtitle {
+    font-size: 22px;
+    font-family: 'Plus Jakarta Sans', sans-serif;
+    font-weight: 800;
+    color: #f0ede8;
+    margin-bottom: 6px;
+  }
+  .page-desc {
+    font-size: 13px;
+    color: #8a8a9a;
+    margin-bottom: 36px;
+  }
+  .cards {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 20px;
+    max-width: 1100px;
+    margin: 0 auto;
+  }
+  @media (max-width: 860px) {
+    .cards { grid-template-columns: 1fr; }
+  }
+  .card {
+    border: 2px solid #2a2a4a;
+    border-radius: 12px;
+    overflow: hidden;
+    cursor: pointer;
+    transition: border-color 0.2s, transform 0.15s;
+    background: #12122a;
+  }
+  .card:hover { border-color: #D4900A; transform: translateY(-2px); }
+  .card.selected { border-color: #D4900A; box-shadow: 0 0 0 1px #D4900A; }
+  .card-preview {
+    height: 260px;
+    position: relative;
+    overflow: hidden;
+  }
+
+  /* ---- APPROACH A: Full-screen navy immersive ---- */
+  .preview-a {
+    background: #000054;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    padding: 24px;
+    text-align: center;
+    position: relative;
+  }
+  .preview-a::before {
+    content: '';
+    position: absolute;
+    inset: 0;
+    background: radial-gradient(ellipse at 50% 40%, rgba(212,144,10,0.12) 0%, transparent 70%);
+  }
+  .preview-a .logo-block {
+    width: 32px; height: 32px;
+    background: #D4900A;
+    display: flex; align-items: center; justify-content: center;
+    font-family: 'Plus Jakarta Sans', sans-serif;
+    font-weight: 900; font-size: 18px; color: #000054;
+    margin-bottom: 12px;
+    position: relative;
+  }
+  .preview-a .brand {
+    font-family: 'Plus Jakarta Sans', sans-serif;
+    font-weight: 800; font-size: 10px;
+    letter-spacing: 0.2em; text-transform: uppercase;
+    color: #fff;
+    margin-bottom: 16px;
+  }
+  .preview-a h1 {
+    font-family: 'Plus Jakarta Sans', sans-serif;
+    font-weight: 900; font-size: 20px;
+    color: #fff;
+    line-height: 1.1;
+    margin-bottom: 8px;
+    position: relative;
+  }
+  .preview-a .gold-accent {
+    color: #D4900A;
+  }
+  .preview-a p {
+    font-size: 9px; color: rgba(255,255,255,0.55);
+    line-height: 1.5; max-width: 180px;
+    margin-bottom: 14px;
+  }
+  .preview-a .badge {
+    border: 1px solid rgba(212,144,10,0.4);
+    color: #D4900A;
+    font-size: 7px; font-weight: 700;
+    letter-spacing: 0.15em; text-transform: uppercase;
+    padding: 4px 10px;
+  }
+  .preview-a .social-row {
+    display: flex; gap: 8px; margin-top: 12px;
+  }
+  .preview-a .dot {
+    width: 20px; height: 20px;
+    border: 1px solid rgba(255,255,255,0.15);
+    border-radius: 50%;
+    display: flex; align-items: center; justify-content: center;
+    font-size: 6px; color: rgba(255,255,255,0.4);
+  }
+
+  /* ---- APPROACH B: Split layout ---- */
+  .preview-b {
+    display: flex;
+    height: 100%;
+  }
+  .preview-b .left-panel {
+    width: 45%;
+    background: #000054;
+    display: flex; flex-direction: column;
+    justify-content: center; align-items: center;
+    padding: 16px;
+    text-align: center;
+  }
+  .preview-b .logo-block {
+    width: 28px; height: 28px;
+    background: #D4900A;
+    display: flex; align-items: center; justify-content: center;
+    font-family: 'Plus Jakarta Sans', sans-serif;
+    font-weight: 900; font-size: 16px; color: #000054;
+    margin-bottom: 8px;
+  }
+  .preview-b .brand-name {
+    font-family: 'Plus Jakarta Sans', sans-serif;
+    font-weight: 800; font-size: 8px;
+    letter-spacing: 0.18em; text-transform: uppercase; color: #fff;
+    margin-bottom: 4px;
+  }
+  .preview-b .brand-sub {
+    font-size: 6px; color: rgba(255,255,255,0.45);
+    letter-spacing: 0.12em; text-transform: uppercase;
+    margin-bottom: 16px;
+  }
+  .preview-b .divider {
+    width: 24px; height: 1px; background: #D4900A; margin: 0 auto 12px;
+  }
+  .preview-b .tagline {
+    font-size: 7px; color: rgba(255,255,255,0.5); line-height: 1.5;
+    max-width: 100px;
+  }
+  .preview-b .right-panel {
+    width: 55%;
+    background: #F8F5EF;
+    display: flex; flex-direction: column;
+    justify-content: center;
+    padding: 20px 16px;
+  }
+  .preview-b .label {
+    font-size: 7px; font-weight: 700; letter-spacing: 0.15em;
+    text-transform: uppercase; color: #D4900A; margin-bottom: 8px;
+  }
+  .preview-b h2 {
+    font-family: 'Plus Jakarta Sans', sans-serif;
+    font-weight: 900; font-size: 14px;
+    color: #000054; line-height: 1.2; margin-bottom: 6px;
+  }
+  .preview-b .body-text {
+    font-size: 7px; color: #6B6660; line-height: 1.5; margin-bottom: 12px;
+  }
+  .preview-b .social-row {
+    display: flex; gap: 5px;
+  }
+  .preview-b .social-pill {
+    font-size: 6px; font-weight: 600;
+    border: 1px solid #D4900A;
+    color: #D4900A; padding: 3px 7px;
+    letter-spacing: 0.08em; text-transform: uppercase;
+  }
+  .preview-b .wrench {
+    font-size: 20px; margin-bottom: 8px; opacity: 0.3;
+  }
+
+  /* ---- APPROACH C: Light canvas / minimal ---- */
+  .preview-c {
+    background: #F8F5EF;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    padding: 24px;
+    text-align: center;
+    position: relative;
+  }
+  .preview-c .top-bar {
+    position: absolute; top: 0; left: 0; right: 0;
+    height: 3px; background: linear-gradient(90deg, #000054, #D4900A);
+  }
+  .preview-c .logo-inline {
+    display: flex; align-items: center; gap: 8px; margin-bottom: 20px;
+  }
+  .preview-c .logo-box {
+    width: 24px; height: 24px;
+    background: #000054;
+    display: flex; align-items: center; justify-content: center;
+    font-family: 'Plus Jakarta Sans', sans-serif;
+    font-weight: 900; font-size: 13px; color: #D4900A;
+  }
+  .preview-c .brand-name {
+    font-family: 'Plus Jakarta Sans', sans-serif;
+    font-weight: 700; font-size: 8px;
+    letter-spacing: 0.15em; text-transform: uppercase; color: #000054;
+  }
+  .preview-c .status-badge {
+    background: #D4900A;
+    color: #fff; font-size: 7px; font-weight: 700;
+    letter-spacing: 0.15em; text-transform: uppercase;
+    padding: 4px 10px; margin-bottom: 14px;
+  }
+  .preview-c h2 {
+    font-family: 'Plus Jakarta Sans', sans-serif;
+    font-weight: 900; font-size: 17px; color: #000054;
+    line-height: 1.15; margin-bottom: 6px;
+  }
+  .preview-c p {
+    font-size: 8px; color: #6B6660; line-height: 1.5;
+    max-width: 180px; margin-bottom: 14px;
+  }
+  .preview-c .line { width: 32px; height: 2px; background: #D4900A; margin: 0 auto 12px; }
+  .preview-c .social-row {
+    display: flex; gap: 8px;
+  }
+  .preview-c .social-item {
+    width: 22px; height: 22px;
+    border: 1px solid #C8C3B8;
+    display: flex; align-items: center; justify-content: center;
+    font-size: 6px; color: #6B6660;
+  }
+
+  /* Card info */
+  .card-info {
+    padding: 16px 18px 18px;
+  }
+  .card-letter {
+    display: inline-block;
+    width: 22px; height: 22px;
+    background: #D4900A;
+    color: #000;
+    font-weight: 800; font-size: 11px;
+    text-align: center; line-height: 22px;
+    margin-bottom: 8px;
+  }
+  .card-info h3 {
+    font-family: 'Plus Jakarta Sans', sans-serif;
+    font-size: 14px; font-weight: 800; color: #f0ede8;
+    margin-bottom: 4px;
+  }
+  .card-info p {
+    font-size: 12px; color: #7a7a9a; line-height: 1.5;
+    margin-bottom: 10px;
+  }
+  .tag-row { display: flex; flex-wrap: wrap; gap: 5px; }
+  .tag {
+    font-size: 9px; font-weight: 600; letter-spacing: 0.08em;
+    text-transform: uppercase;
+    padding: 3px 8px;
+    border: 1px solid #2a2a4a;
+    color: #6a6a8a;
+    border-radius: 2px;
+  }
+  .tag.gold { border-color: rgba(212,144,10,0.4); color: #D4900A; }
+
+  .selected-indicator {
+    display: none;
+    position: fixed; bottom: 20px; left: 50%; transform: translateX(-50%);
+    background: #D4900A; color: #000;
+    font-size: 12px; font-weight: 700; letter-spacing: 0.1em; text-transform: uppercase;
+    padding: 10px 24px; border-radius: 4px;
+    box-shadow: 0 4px 20px rgba(0,0,0,0.4);
+  }
+  .selected-indicator.visible { display: block; }
+</style>
+</head>
+<body>
+
+<div style="max-width:1100px;margin:0 auto;">
+  <div class="page-title">Downtime Page — Design Approaches</div>
+  <div class="page-subtitle">Which visual direction feels right for Zongea?</div>
+  <div class="page-desc">Click a card to select it. All three use the same brand colors (navy #000054 + gold #D4900A) and fonts.</div>
+
+  <div class="cards">
+
+    <!-- OPTION A -->
+    <div class="card" data-choice="a" onclick="selectCard(this)">
+      <div class="card-preview preview-a">
+        <div class="logo-block">Z</div>
+        <div class="brand">Zongea Institute of Technology</div>
+        <h1>Something<br><span class="gold-accent">Great</span><br>Is Coming.</h1>
+        <p>We're upgrading our site to better serve you. Check back soon.</p>
+        <div class="badge">Under Maintenance</div>
+        <div class="social-row">
+          <div class="dot">in</div>
+          <div class="dot">ig</div>
+          <div class="dot">tw</div>
+        </div>
+      </div>
+      <div class="card-info">
+        <div class="card-letter">A</div>
+        <h3>Immersive Navy</h3>
+        <p>Full-screen dark navy background with a radial gold glow. Bold, cinematic, brand-forward. Matches the existing hero section's atmosphere.</p>
+        <div class="tag-row">
+          <span class="tag gold">Recommended</span>
+          <span class="tag">Bold</span>
+          <span class="tag">Cinematic</span>
+          <span class="tag">On-brand</span>
+        </div>
+      </div>
+    </div>
+
+    <!-- OPTION B -->
+    <div class="card" data-choice="b" onclick="selectCard(this)">
+      <div class="card-preview">
+        <div class="preview-b">
+          <div class="left-panel">
+            <div class="logo-block">Z</div>
+            <div class="brand-name">Zongea</div>
+            <div class="brand-sub">Institute of Technology</div>
+            <div class="divider"></div>
+            <div class="tagline">100% free tech education in Liberia</div>
+          </div>
+          <div class="right-panel">
+            <div class="label">Site Maintenance</div>
+            <h2>We'll Be<br>Back Soon</h2>
+            <div class="wrench">🔧</div>
+            <div class="body-text">Our team is working hard to bring you an improved experience. Thank you for your patience.</div>
+            <div class="social-row">
+              <div class="social-pill">LinkedIn</div>
+              <div class="social-pill">Instagram</div>
+            </div>
+          </div>
+        </div>
+      </div>
+      <div class="card-info">
+        <div class="card-letter">B</div>
+        <h3>Split Panel</h3>
+        <p>Left half is deep navy brand identity, right half is warm canvas with the maintenance message. Editorial and structured, feels institutional.</p>
+        <div class="tag-row">
+          <span class="tag">Editorial</span>
+          <span class="tag">Structured</span>
+          <span class="tag">Professional</span>
+        </div>
+      </div>
+    </div>
+
+    <!-- OPTION C -->
+    <div class="card" data-choice="c" onclick="selectCard(this)">
+      <div class="card-preview preview-c">
+        <div class="top-bar"></div>
+        <div class="logo-inline">
+          <div class="logo-box">Z</div>
+          <div class="brand-name">Zongea Institute of Technology</div>
+        </div>
+        <div class="status-badge">Under Maintenance</div>
+        <div class="line"></div>
+        <h2>Coming<br>Soon</h2>
+        <p>We're building something better. Our new site will be ready shortly.</p>
+        <div class="social-row">
+          <div class="social-item">in</div>
+          <div class="social-item">ig</div>
+          <div class="social-item">tw</div>
+        </div>
+      </div>
+      <div class="card-info">
+        <div class="card-letter">C</div>
+        <h3>Clean Canvas</h3>
+        <p>Light warm background (canvas #F8F5EF) with a navy-to-gold top gradient bar. Minimal, clean, easy to read. Calm and trustworthy feel.</p>
+        <div class="tag-row">
+          <span class="tag">Minimal</span>
+          <span class="tag">Clean</span>
+          <span class="tag">Light</span>
+        </div>
+      </div>
+    </div>
+
+  </div>
+
+  <div style="margin-top:28px;padding:16px;border:1px solid #2a2a4a;border-radius:8px;max-width:560px;">
+    <div style="font-size:11px;font-weight:700;letter-spacing:0.1em;text-transform:uppercase;color:#D4900A;margin-bottom:6px;">My Recommendation: Option A</div>
+    <div style="font-size:12px;color:#8a8a9a;line-height:1.6;">Option A matches the immersive feel of your existing hero section — the dark navy with gold accents is your strongest brand expression. It turns a "site is down" moment into a compelling first impression that builds anticipation.</div>
+  </div>
+</div>
+
+<div class="selected-indicator" id="indicator">Option selected — tell me in the terminal</div>
+
+<script>
+  function selectCard(el) {
+    document.querySelectorAll('.card').forEach(c => c.classList.remove('selected'));
+    el.classList.add('selected');
+    const choice = el.dataset.choice;
+    document.getElementById('indicator').classList.add('visible');
+    document.getElementById('indicator').textContent = 'Option ' + choice.toUpperCase() + ' selected — tell me in the terminal';
+    // record event
+    fetch('/event', {
+      method: 'POST',
+      headers: {'Content-Type':'application/json'},
+      body: JSON.stringify({type:'click', choice, text: el.querySelector('h3').textContent})
+    }).catch(()=>{});
+  }
+</script>
+</body>
+</html>

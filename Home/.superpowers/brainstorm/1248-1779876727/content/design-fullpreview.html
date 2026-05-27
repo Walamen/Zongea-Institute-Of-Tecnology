@@ -1,0 +1,339 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Option C – Full Preview</title>
+<link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;600;700;800;900&family=Inter:wght@300;400;500;600&display=swap" rel="stylesheet">
+<style>
+  * { box-sizing: border-box; margin: 0; padding: 0; }
+
+  body {
+    font-family: 'Inter', sans-serif;
+    background: #1a1a2e;
+    color: #f0ede8;
+    padding: 32px 24px 48px;
+  }
+
+  .page-title {
+    font-family: 'Plus Jakarta Sans', sans-serif;
+    font-size: 13px; font-weight: 700;
+    letter-spacing: 0.15em; text-transform: uppercase;
+    color: #D4900A; margin-bottom: 6px;
+  }
+  .page-subtitle {
+    font-size: 20px; font-family: 'Plus Jakarta Sans', sans-serif;
+    font-weight: 800; color: #f0ede8; margin-bottom: 4px;
+  }
+  .page-desc { font-size: 12px; color: #7a7a9a; margin-bottom: 32px; }
+
+  /* ---- BROWSER CHROME ---- */
+  .browser-chrome {
+    max-width: 900px;
+    margin: 0 auto;
+    border-radius: 10px;
+    overflow: hidden;
+    box-shadow: 0 24px 80px rgba(0,0,0,0.6);
+    border: 1px solid #2a2a4a;
+  }
+  .browser-bar {
+    background: #252535;
+    padding: 10px 16px;
+    display: flex; align-items: center; gap: 10px;
+  }
+  .browser-dots { display: flex; gap: 5px; }
+  .browser-dot { width: 10px; height: 10px; border-radius: 50%; }
+  .browser-dot.red { background: #ff5f57; }
+  .browser-dot.yellow { background: #febc2e; }
+  .browser-dot.green { background: #28c840; }
+  .browser-url {
+    flex: 1; background: #1a1a2e;
+    border-radius: 5px; padding: 4px 12px;
+    font-size: 11px; color: #6a6a8a;
+    font-family: 'Inter', monospace;
+  }
+
+  /* ---- THE ACTUAL PAGE ---- */
+  .site-page {
+    background: #F8F5EF;
+    min-height: 540px;
+    position: relative;
+    display: flex;
+    flex-direction: column;
+  }
+
+  /* Gradient top bar */
+  .top-bar {
+    height: 4px;
+    background: linear-gradient(90deg, #000054 0%, #D4900A 100%);
+    flex-shrink: 0;
+  }
+
+  /* Subtle grid pattern overlay */
+  .grid-overlay {
+    position: absolute;
+    inset: 0;
+    background-image:
+      linear-gradient(rgba(0,0,84,0.03) 1px, transparent 1px),
+      linear-gradient(90deg, rgba(0,0,84,0.03) 1px, transparent 1px);
+    background-size: 40px 40px;
+    pointer-events: none;
+  }
+
+  /* Navbar strip */
+  .site-navbar {
+    padding: 16px 40px;
+    display: flex; align-items: center; justify-content: space-between;
+    border-bottom: 1px solid rgba(0,0,84,0.08);
+    position: relative;
+    z-index: 1;
+  }
+  .nav-logo { display: flex; align-items: center; gap: 10px; }
+  .nav-logo-box {
+    width: 30px; height: 30px;
+    background: #000054;
+    display: flex; align-items: center; justify-content: center;
+    font-family: 'Plus Jakarta Sans', sans-serif;
+    font-weight: 900; font-size: 17px; color: #D4900A;
+  }
+  .nav-logo-text { line-height: 1.2; }
+  .nav-logo-name {
+    font-family: 'Plus Jakarta Sans', sans-serif;
+    font-weight: 800; font-size: 9px;
+    letter-spacing: 0.15em; text-transform: uppercase; color: #000054;
+  }
+  .nav-logo-sub {
+    font-size: 7px; color: #6B6660;
+    letter-spacing: 0.1em; text-transform: uppercase;
+  }
+  .nav-status {
+    font-size: 8px; font-weight: 700; letter-spacing: 0.12em;
+    text-transform: uppercase; color: #D4900A;
+    border: 1px solid rgba(212,144,10,0.4);
+    padding: 4px 10px;
+  }
+
+  /* Main content area */
+  .site-main {
+    flex: 1;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    padding: 48px 40px;
+    text-align: center;
+    position: relative;
+    z-index: 1;
+  }
+
+  /* Gear/wrench icon area */
+  .icon-ring {
+    width: 64px; height: 64px;
+    border: 2px solid rgba(0,0,84,0.12);
+    border-radius: 50%;
+    display: flex; align-items: center; justify-content: center;
+    margin: 0 auto 24px;
+    background: rgba(0,0,84,0.04);
+  }
+  .icon-ring svg {
+    width: 28px; height: 28px;
+    stroke: #000054; stroke-width: 1.5;
+    fill: none;
+  }
+
+  /* Gold accent line */
+  .gold-line {
+    width: 40px; height: 3px;
+    background: #D4900A;
+    margin: 0 auto 16px;
+  }
+
+  .site-label {
+    font-size: 9px; font-weight: 700; letter-spacing: 0.18em;
+    text-transform: uppercase; color: #D4900A;
+    margin-bottom: 12px;
+  }
+  .site-headline {
+    font-family: 'Plus Jakarta Sans', sans-serif;
+    font-weight: 900; font-size: 40px;
+    color: #000054; line-height: 1.05;
+    letter-spacing: -0.02em;
+    margin-bottom: 16px;
+  }
+  .site-subtext {
+    font-size: 13px; color: #6B6660; line-height: 1.7;
+    max-width: 380px; margin: 0 auto 32px;
+  }
+  .site-subtext strong {
+    color: #000054; font-weight: 600;
+  }
+
+  /* Divider with dots */
+  .dot-divider {
+    display: flex; align-items: center; gap: 10px;
+    margin-bottom: 28px;
+  }
+  .dot-divider .line-seg { flex: 1; height: 1px; background: rgba(0,0,84,0.12); }
+  .dot-divider .dot { width: 5px; height: 5px; background: #D4900A; border-radius: 50%; }
+
+  /* Social links */
+  .social-label {
+    font-size: 8px; font-weight: 700; letter-spacing: 0.15em;
+    text-transform: uppercase; color: #6B6660;
+    margin-bottom: 10px;
+  }
+  .social-row {
+    display: flex; gap: 10px; justify-content: center;
+  }
+  .social-btn {
+    display: flex; align-items: center; gap: 6px;
+    border: 1px solid rgba(0,0,84,0.2);
+    padding: 7px 14px;
+    font-size: 9px; font-weight: 700; letter-spacing: 0.1em;
+    text-transform: uppercase; color: #000054;
+    background: transparent;
+    cursor: pointer;
+    transition: all 0.2s;
+  }
+  .social-btn:hover { background: #000054; color: #fff; border-color: #000054; }
+  .social-btn svg { width: 12px; height: 12px; stroke: currentColor; fill: none; }
+
+  /* Footer strip */
+  .site-footer {
+    padding: 14px 40px;
+    border-top: 1px solid rgba(0,0,84,0.08);
+    display: flex; align-items: center; justify-content: space-between;
+    position: relative; z-index: 1;
+  }
+  .footer-copy {
+    font-size: 8px; color: #9a9590; letter-spacing: 0.05em;
+  }
+  .footer-mission {
+    font-size: 8px; color: #D4900A; font-weight: 600;
+    letter-spacing: 0.08em; text-transform: uppercase;
+  }
+
+  /* Annotations */
+  .annotations {
+    max-width: 900px; margin: 28px auto 0;
+    display: grid; grid-template-columns: repeat(3,1fr); gap: 14px;
+  }
+  .annotation {
+    background: #12122a; border: 1px solid #2a2a4a;
+    border-radius: 8px; padding: 14px;
+  }
+  .ann-label {
+    font-size: 9px; font-weight: 700; letter-spacing: 0.12em;
+    text-transform: uppercase; color: #D4900A; margin-bottom: 5px;
+  }
+  .ann-text { font-size: 11px; color: #8a8a9a; line-height: 1.5; }
+</style>
+</head>
+<body>
+
+<div style="max-width:960px;margin:0 auto;">
+  <div class="page-title">Option C — Full Mockup</div>
+  <div class="page-subtitle">Clean Canvas Maintenance Page</div>
+  <div class="page-desc">Full-fidelity preview at desktop size. Scroll down for design notes.</div>
+
+  <div class="browser-chrome">
+    <div class="browser-bar">
+      <div class="browser-dots">
+        <div class="browser-dot red"></div>
+        <div class="browser-dot yellow"></div>
+        <div class="browser-dot green"></div>
+      </div>
+      <div class="browser-url">zongea.edu.lr</div>
+    </div>
+
+    <div class="site-page">
+      <div class="top-bar"></div>
+      <div class="grid-overlay"></div>
+
+      <!-- Navbar -->
+      <div class="site-navbar">
+        <div class="nav-logo">
+          <div class="nav-logo-box">Z</div>
+          <div class="nav-logo-text">
+            <div class="nav-logo-name">Zongea</div>
+            <div class="nav-logo-sub">Institute of Technology</div>
+          </div>
+        </div>
+        <div class="nav-status">Under Maintenance</div>
+      </div>
+
+      <!-- Main -->
+      <div class="site-main">
+        <div class="icon-ring">
+          <!-- Settings/gear icon -->
+          <svg viewBox="0 0 24 24">
+            <path d="M12 15a3 3 0 1 0 0-6 3 3 0 0 0 0 6z"/>
+            <path d="M19.4 15a1.65 1.65 0 0 0 .33 1.82l.06.06a2 2 0 0 1-2.83 2.83l-.06-.06a1.65 1.65 0 0 0-1.82-.33 1.65 1.65 0 0 0-1 1.51V21a2 2 0 0 1-4 0v-.09A1.65 1.65 0 0 0 9 19.4a1.65 1.65 0 0 0-1.82.33l-.06.06a2 2 0 0 1-2.83-2.83l.06-.06A1.65 1.65 0 0 0 4.68 15a1.65 1.65 0 0 0-1.51-1H3a2 2 0 0 1 0-4h.09A1.65 1.65 0 0 0 4.6 9a1.65 1.65 0 0 0-.33-1.82l-.06-.06a2 2 0 0 1 2.83-2.83l.06.06A1.65 1.65 0 0 0 9 4.68a1.65 1.65 0 0 0 1-1.51V3a2 2 0 0 1 4 0v.09a1.65 1.65 0 0 0 1 1.51 1.65 1.65 0 0 0 1.82-.33l.06-.06a2 2 0 0 1 2.83 2.83l-.06.06A1.65 1.65 0 0 0 19.4 9a1.65 1.65 0 0 0 1.51 1H21a2 2 0 0 1 0 4h-.09a1.65 1.65 0 0 0-1.51 1z"/>
+          </svg>
+        </div>
+
+        <div class="site-label">Site Maintenance</div>
+        <div class="gold-line"></div>
+
+        <h1 class="site-headline">We're Coming<br>Back Soon.</h1>
+
+        <p class="site-subtext">
+          Our website is currently undergoing scheduled maintenance.<br>
+          We're building something <strong>better for you</strong> — <br>
+          please check back shortly.
+        </p>
+
+        <div class="dot-divider" style="width:200px;">
+          <div class="line-seg"></div>
+          <div class="dot"></div>
+          <div class="line-seg"></div>
+        </div>
+
+        <div class="social-label">Follow us for updates</div>
+        <div class="social-row">
+          <div class="social-btn">
+            <svg viewBox="0 0 24 24"><path d="M16 8a6 6 0 0 1 6 6v7h-4v-7a2 2 0 0 0-2-2 2 2 0 0 0-2 2v7h-4v-7a6 6 0 0 1 6-6z"/><rect x="2" y="9" width="4" height="12"/><circle cx="4" cy="4" r="2"/></svg>
+            LinkedIn
+          </div>
+          <div class="social-btn">
+            <svg viewBox="0 0 24 24"><rect x="2" y="2" width="20" height="20" rx="5" ry="5"/><path d="M16 11.37A4 4 0 1 1 12.63 8 4 4 0 0 1 16 11.37z"/><line x1="17.5" y1="6.5" x2="17.51" y2="6.5"/></svg>
+            Instagram
+          </div>
+          <div class="social-btn">
+            <svg viewBox="0 0 24 24"><path d="M23 3a10.9 10.9 0 0 1-3.14 1.53 4.48 4.48 0 0 0-7.86 3v1A10.66 10.66 0 0 1 3 4s-4 9 5 13a11.64 11.64 0 0 1-7 2c9 5 20 0 20-11.5a4.5 4.5 0 0 0-.08-.83A7.72 7.72 0 0 0 23 3z"/></svg>
+            Twitter / X
+          </div>
+        </div>
+      </div>
+
+      <!-- Footer -->
+      <div class="site-footer">
+        <div class="footer-copy">© 2025 Zongea Institute of Technology. All rights reserved.</div>
+        <div class="footer-mission">100% Tuition-Free · Liberia</div>
+      </div>
+    </div>
+  </div>
+
+  <!-- Annotations -->
+  <div class="annotations">
+    <div class="annotation">
+      <div class="ann-label">Top gradient bar</div>
+      <div class="ann-text">4px navy→gold gradient — a signature accent used to tie it visually to the brand without overwhelming the calm canvas feel.</div>
+    </div>
+    <div class="annotation">
+      <div class="ann-label">Typography</div>
+      <div class="ann-text">Same fonts as the main site: Plus Jakarta Sans (display/headings) + Inter (body). Headline is bold 40px, navy, tight tracking.</div>
+    </div>
+    <div class="annotation">
+      <div class="ann-label">Social buttons</div>
+      <div class="ann-text">Outlined navy buttons for LinkedIn, Instagram, Twitter/X. Hover fills solid navy — clean and professional, no garish colors.</div>
+    </div>
+  </div>
+
+  <div style="margin-top:20px;padding:14px 18px;background:#12122a;border:1px solid rgba(212,144,10,0.3);border-radius:8px;max-width:900px;font-size:12px;color:#8a8a9a;line-height:1.6;">
+    <span style="color:#D4900A;font-weight:700;">Does this layout look right?</span> Let me know if you want to adjust anything — copy, layout, the social platforms shown, or any other detail — before I write up the spec.
+  </div>
+</div>
+
+</body>
+</html>

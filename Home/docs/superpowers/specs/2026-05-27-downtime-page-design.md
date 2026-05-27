@@ -44,7 +44,7 @@ Light warm background (`#F8F5EF`) with structured navy/gold brand accents. Calm,
 - Social buttons row: LinkedIn, Instagram, Twitter/X — outlined (`border-primary/20`, `text-primary`), hover fills solid navy
 
 ### Footer strip
-- Left: `© 2025 Zongea Institute of Technology. All rights reserved.` — small, `text-stone`
+- Left: `© 2026 Zongea Institute of Technology. All rights reserved.` — small, `text-stone`
 - Right: `100% Tuition-Free · Liberia` — small, `text-secondary`, uppercase
 - Separated by a `border-t` (`border-primary/10`)
 
@@ -76,7 +76,7 @@ A faint grid overlay (CSS `background-image` with `linear-gradient` lines at `rg
 - **Headline:** `We're Coming Back Soon.`
 - **Body:** `Our website is currently undergoing scheduled maintenance. We're building something better for you — please check back shortly.`
 - **Social label:** `Follow us for updates`
-- **Footer left:** `© 2025 Zongea Institute of Technology. All rights reserved.`
+- **Footer left:** `© 2026 Zongea Institute of Technology. All rights reserved.`
 - **Footer right:** `100% Tuition-Free · Liberia`
 
 ---
@@ -89,7 +89,7 @@ Three buttons shown: **LinkedIn**, **Instagram**, **Twitter / X**. Each is an `<
 
 ## Implementation Notes
 
-- **File location:** `app/maintenance/page.tsx` (or swap `app/page.tsx` content during maintenance)
+- **File location:** `app/maintenance/page.tsx` — a dedicated route at `/maintenance`. To activate it during downtime, the current `app/page.tsx` content gets swapped out and replaced with a redirect to `/maintenance` (or the maintenance component is rendered directly in `app/page.tsx` and the original page component is temporarily saved/branched).
 - **No router dependencies** — fully static, no data fetching
 - **`'use client'`** directive needed only if framer-motion animations are added (optional subtle fade-in on mount)
 - **Responsive:** single-column centered layout, social buttons wrap on mobile
