@@ -28,7 +28,30 @@ export default function MaintenancePage() {
       />
 
       <div className="relative flex-1 flex flex-col z-10">
-        <p className="text-stone p-8">sections coming…</p>
+
+        {/* Navbar */}
+        <header className="flex items-center justify-between px-6 sm:px-10 py-4 border-b border-primary/10">
+          <a href="/" className="flex items-center gap-3">
+            <div className="w-9 h-9 bg-primary flex items-center justify-center flex-shrink-0">
+              <span className="font-display font-black text-secondary text-xl leading-none">
+                Z
+              </span>
+            </div>
+            <div className="leading-tight">
+              <p className="font-display font-bold text-2xs uppercase tracking-widest text-primary">
+                Zongea
+              </p>
+              <p className="text-2xs uppercase tracking-wider text-stone">
+                Institute of Technology
+              </p>
+            </div>
+          </a>
+
+          <span className="text-2xs font-bold uppercase tracking-widest text-secondary border border-secondary/40 px-3 py-1.5 flex-shrink-0">
+            Under Maintenance
+          </span>
+        </header>
+
       </div>
 
     </div>
