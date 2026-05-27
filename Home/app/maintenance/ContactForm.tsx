@@ -49,10 +49,10 @@ export default function ContactForm() {
   }
 
   return (
-    <form action={dispatch} className="flex flex-col gap-4 w-full">
-      <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
+    <form action={dispatch} className="flex flex-col gap-3 w-full">
+      <div className="grid grid-cols-1 sm:grid-cols-2 gap-3">
         <div>
-          <label className="block text-2xs font-bold uppercase tracking-widest text-white/50 mb-1.5">
+          <label className="block text-2xs font-bold uppercase tracking-widest text-white/50 mb-1">
             Full Name <span className="text-secondary">*</span>
           </label>
           <input
@@ -60,11 +60,11 @@ export default function ContactForm() {
             type="text"
             required
             placeholder="Your name"
-            className="w-full bg-white/10 border border-white/15 text-white placeholder:text-white/30 px-4 py-2.5 text-sm focus:outline-none focus:ring-0 focus:border-secondary transition-colors duration-200"
+            className="w-full bg-white/10 border border-white/15 text-white placeholder:text-white/30 px-3 py-2 text-sm focus:outline-none focus:ring-0 focus:border-secondary transition-colors duration-200"
           />
         </div>
         <div>
-          <label className="block text-2xs font-bold uppercase tracking-widest text-white/50 mb-1.5">
+          <label className="block text-2xs font-bold uppercase tracking-widest text-white/50 mb-1">
             Email <span className="text-secondary">*</span>
           </label>
           <input
@@ -72,33 +72,33 @@ export default function ContactForm() {
             type="email"
             required
             placeholder="your@email.com"
-            className="w-full bg-white/10 border border-white/15 text-white placeholder:text-white/30 px-4 py-2.5 text-sm focus:outline-none focus:ring-0 focus:border-secondary transition-colors duration-200"
+            className="w-full bg-white/10 border border-white/15 text-white placeholder:text-white/30 px-3 py-2 text-sm focus:outline-none focus:ring-0 focus:border-secondary transition-colors duration-200"
           />
         </div>
       </div>
 
       <div>
-        <label className="block text-2xs font-bold uppercase tracking-widest text-white/50 mb-1.5">
+        <label className="block text-2xs font-bold uppercase tracking-widest text-white/50 mb-1">
           Subject
         </label>
         <input
           name="subject"
           type="text"
           placeholder="What's this about? (optional)"
-          className="w-full bg-white/10 border border-white/15 text-white placeholder:text-white/30 px-4 py-2.5 text-sm focus:outline-none focus:ring-0 focus:border-secondary transition-colors duration-200"
+          className="w-full bg-white/10 border border-white/15 text-white placeholder:text-white/30 px-3 py-2 text-sm focus:outline-none focus:ring-0 focus:border-secondary transition-colors duration-200"
         />
       </div>
 
       <div>
-        <label className="block text-2xs font-bold uppercase tracking-widest text-white/50 mb-1.5">
+        <label className="block text-2xs font-bold uppercase tracking-widest text-white/50 mb-1">
           Message <span className="text-secondary">*</span>
         </label>
         <textarea
           name="message"
           required
-          rows={5}
+          rows={3}
           placeholder="Tell us how we can help…"
-          className="w-full bg-white/10 border border-white/15 text-white placeholder:text-white/30 px-4 py-2.5 text-sm focus:outline-none focus:ring-0 focus:border-secondary transition-colors duration-200 resize-none"
+          className="w-full bg-white/10 border border-white/15 text-white placeholder:text-white/30 px-3 py-2 text-sm focus:outline-none focus:ring-0 focus:border-secondary transition-colors duration-200 resize-none"
         />
       </div>
 
