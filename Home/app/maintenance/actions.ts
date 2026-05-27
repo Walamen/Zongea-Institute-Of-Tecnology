@@ -52,7 +52,7 @@ export async function sendContactEmail(
       to: toEmail,
       from: fromEmail,
       replyTo: email,
-      subject: subject ? `[ZIT Contact] ${subject}` : `[ZIT Contact] Message from ${name}`,
+      subject: subject ? ` ${subject}` : ` Message from ${name}`,
       text: `Name: ${name}\nEmail: ${email}${subject ? `\nSubject: ${subject}` : ''}\n\nMessage:\n${message}`,
       html: `
         <div style="font-family: Arial, sans-serif; max-width: 600px; color: #0C0C0C;">
