@@ -8,6 +8,7 @@
     "start": "next start"
   },
   "dependencies": {
+    "@sendgrid/mail": "^8.1.6",
     "framer-motion": "^12.38.0",
     "gsap": "^3.12.5",
     "lucide-react": "^0.383.0",
