@@ -119,6 +119,16 @@ export default function MaintenancePage() {
 
         </main>
 
+        {/* Footer */}
+        <footer className="flex flex-col sm:flex-row items-center justify-between gap-2 px-6 sm:px-10 py-4 border-t border-primary/10">
+          <p className="text-2xs text-stone tracking-wide">
+            © 2026 Zongea Institute of Technology. All rights reserved.
+          </p>
+          <p className="text-2xs font-semibold uppercase tracking-widest text-secondary">
+            100% Tuition-Free · Liberia
+          </p>
+        </footer>
+
       </div>
 
     </div>
