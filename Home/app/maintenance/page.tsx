@@ -1,5 +1,5 @@
 import type { Metadata } from 'next'
-import { Settings } from 'lucide-react'
+import { Settings, Linkedin, Instagram, Twitter } from 'lucide-react'
 
 export const metadata: Metadata = {
   title: 'Coming Soon — Zongea Institute of Technology',
@@ -79,6 +79,43 @@ export default function MaintenancePage() {
             <strong className="font-semibold text-primary">better for you</strong>{' '}
             — please check back shortly.
           </p>
+
+          {/* Dot divider */}
+          <div className="flex items-center gap-3 w-48 mb-8">
+            <div className="flex-1 h-px bg-primary/10" />
+            <div className="w-1.5 h-1.5 rounded-full bg-secondary" />
+            <div className="flex-1 h-px bg-primary/10" />
+          </div>
+
+          {/* Social label */}
+          <p className="text-2xs font-bold uppercase tracking-widest text-stone mb-4">
+            Follow us for updates
+          </p>
+
+          {/* Social buttons */}
+          <div className="flex flex-wrap gap-3 justify-center">
+            <a
+              href="#"
+              className="flex items-center gap-2 border border-primary/20 text-primary text-2xs font-bold uppercase tracking-widest px-4 py-2.5 hover:bg-primary hover:text-white hover:border-primary transition-colors duration-200"
+            >
+              <Linkedin size={13} strokeWidth={2} />
+              LinkedIn
+            </a>
+            <a
+              href="#"
+              className="flex items-center gap-2 border border-primary/20 text-primary text-2xs font-bold uppercase tracking-widest px-4 py-2.5 hover:bg-primary hover:text-white hover:border-primary transition-colors duration-200"
+            >
+              <Instagram size={13} strokeWidth={2} />
+              Instagram
+            </a>
+            <a
+              href="#"
+              className="flex items-center gap-2 border border-primary/20 text-primary text-2xs font-bold uppercase tracking-widest px-4 py-2.5 hover:bg-primary hover:text-white hover:border-primary transition-colors duration-200"
+            >
+              <Twitter size={13} strokeWidth={2} />
+              Twitter / X
+            </a>
+          </div>
 
         </main>
 
