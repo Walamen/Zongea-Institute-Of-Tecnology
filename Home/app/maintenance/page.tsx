@@ -1,4 +1,5 @@
 import type { Metadata } from 'next'
+import { Settings } from 'lucide-react'
 
 export const metadata: Metadata = {
   title: 'Coming Soon — Zongea Institute of Technology',
@@ -51,6 +52,35 @@ export default function MaintenancePage() {
             Under Maintenance
           </span>
         </header>
+
+        {/* Main content */}
+        <main className="flex-1 flex flex-col items-center justify-center text-center px-6 py-16 sm:py-24">
+
+          {/* Gear icon in ring */}
+          <div className="w-16 h-16 rounded-full border border-primary/10 bg-primary/5 flex items-center justify-center mb-8">
+            <Settings size={28} strokeWidth={1.5} className="text-primary" />
+          </div>
+
+          {/* Label + gold accent line */}
+          <p className="text-2xs font-bold uppercase tracking-widest text-secondary mb-3">
+            Site Maintenance
+          </p>
+          <div className="w-10 h-[3px] bg-secondary mb-6" />
+
+          {/* Headline */}
+          <h1 className="font-display font-black text-primary leading-[1.05] tracking-tight text-[clamp(32px,5vw,56px)] mb-5">
+            We&rsquo;re Coming<br className="hidden sm:block" /> Back Soon.
+          </h1>
+
+          {/* Body copy */}
+          <p className="text-sm sm:text-base font-light text-stone leading-relaxed max-w-md mb-10">
+            Our website is currently undergoing scheduled maintenance.
+            We&rsquo;re building something{' '}
+            <strong className="font-semibold text-primary">better for you</strong>{' '}
+            — please check back shortly.
+          </p>
+
+        </main>
 
       </div>
 
