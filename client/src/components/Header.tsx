@@ -2,7 +2,6 @@ import { useState } from "react";
 import { NavLink, useLocation } from "react-router-dom";
 import { Dialog } from "@headlessui/react";
 import { Bars3Icon, XMarkIcon, ChevronDownIcon, Bars3BottomLeftIcon } from "@heroicons/react/24/outline";
-import { motion, AnimatePresence } from "framer-motion";
 import Logo from "../asset/images/zongea-logo.png";
 import { FaFacebookF, FaInstagram, FaLinkedinIn } from "react-icons/fa";
 import axios from "axios";
@@ -226,29 +225,17 @@ function Header() {
       </nav>
 
       {/* Mobile Menu */}
-      <AnimatePresence>
-        {mobileMenuOpen && (
-          <Dialog 
-            as="div" 
-            className="lg:hidden" 
-            open={mobileMenuOpen} 
-            onClose={() => setMobileMenuOpen(false)}
-            static
-          >
-            <motion.div
-              initial={{ opacity: 0 }}
-              animate={{ opacity: 1 }}
-              exit={{ opacity: 0 }}
-              className="fixed inset-0 z-50 bg-black/20 backdrop-blur-sm"
-            />
-            
-            <motion.div
-              initial={{ x: "100%" }}
-              animate={{ x: 0 }}
-              exit={{ x: "100%" }}
-              transition={{ type: "spring", damping: 25, stiffness: 200 }}
-              className="fixed inset-y-0 right-0 z-50 w-full overflow-y-auto bg-white px-6 py-6 sm:max-w-sm"
-            >
+      {mobileMenuOpen && (
+        <Dialog
+          as="div"
+          className="lg:hidden"
+          open={mobileMenuOpen}
+          onClose={() => setMobileMenuOpen(false)}
+          static
+        >
+          <div className="fixed inset-0 z-50 bg-black/20 backdrop-blur-sm" />
+
+          <div className="fixed inset-y-0 right-0 z-50 w-full overflow-y-auto bg-white px-6 py-6 sm:max-w-sm">
               <div className="flex items-center justify-between">
                 <NavLink to="/" onClick={() => setMobileMenuOpen(false)}>
                   <img src={Logo} alt="Zongea Logo" className="h-16" />
@@ -381,31 +368,20 @@ function Header() {
                     </div>
                   </div>
                 </div>
-              </div>
-            </motion.div>
-          </Dialog>
-        )}
-      </AnimatePresence>
+            </div>
+          </div>
+        </Dialog>
+      )}
 
       {/* Left Side Panel */}
-      <AnimatePresence>
-        {leftModalOpen && (
-          <>
-            <motion.div
-              initial={{ opacity: 0 }}
-              animate={{ opacity: 1 }}
-              exit={{ opacity: 0 }}
-              className="fixed inset-0 bg-black/50 z-50"
-              onClick={() => setLeftModalOpen(false)}
-            />
+      {leftModalOpen && (
+        <>
+          <div
+            className="fixed inset-0 bg-black/50 z-50"
+            onClick={() => setLeftModalOpen(false)}
+          />
 
-            <motion.div
-              initial={{ x: "100%" }}
-              animate={{ x: 0 }}
-              exit={{ x: "100%" }}
-              transition={{ type: "spring", stiffness: 100, damping: 20 }}
-              className="fixed top-0 right-0 h-screen overflow-y-auto w-full sm:w-96 bg-white shadow-lg z-50"
-            >
+          <div className="fixed top-0 right-0 h-screen overflow-y-auto w-full sm:w-96 bg-white shadow-lg z-50">
               <div className="bg-primary text-white p-4 flex justify-between items-center">
                 <img src={Logo} alt="Logo" className="h-10" />
                 <button 
@@ -532,11 +508,10 @@ function Header() {
               </form>
             )}
           </div>
-              </div>
-            </motion.div>
-          </>
-        )}
-      </AnimatePresence>
+            </div>
+          </div>
+        </>
+      )}
     </header>
   );
 };
