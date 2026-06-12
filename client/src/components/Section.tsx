@@ -8,17 +8,12 @@ interface SectionProps extends SectionType {
 }
 
 export const Section = ({ id, title, subtitle, children, className }: SectionProps) => {
-
   return (
     <section
       id={id}
-      ref={null}
-      className={clsx(
-        'section fade-in',
-        className
-      )}
+      className={clsx('py-16 md:py-24', className)}
     >
-      <div className="container ">
+      <div className="container">
         {(title || subtitle) && (
           <div className="text-center mb-12">
             <h2 className="text-4xl font-bold font-noto mb-4 hidden ">{title}</h2>

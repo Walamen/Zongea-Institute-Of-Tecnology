@@ -1,4 +1,4 @@
-   @tailwind base;
+@tailwind base;
 @tailwind components;
 @tailwind utilities;
 
@@ -7,32 +7,20 @@
     scroll-behavior: smooth;
   }
 }
-  
-  body {
-    @apply bg-primary text-primary;
-  }
+
+body {
+  @apply bg-primary text-primary;
+}
 
 @layer components {
   .section {
-    @apply py-6 pb-14;
-
+    @apply py-16 md:py-24;
   }
-  
+
   .container {
     @apply max-w-7xl mx-auto px-4 sm:px-6 lg:px-8;
   }
-} 
-
-
-.fade-in {
-  opacity: 0;
-  transition: opacity 0.6s ease-in;
 }
-
-.fade-in.visible {
-  opacity: 1;
-}
-
 
 h1 {
   @apply text-h1 font-sans;
@@ -40,14 +28,12 @@ h1 {
 h2 {
   @apply text-h2 font-sans;
 }
-h3{@apply text-h3 font-sans}
+h3 { @apply text-h3 font-sans; }
 p {
   @apply text-p font-sans;
 }
 
-
-
-#cta{
+#cta {
   background: url('../src/asset/images/ui-ux-design.jpeg');
   background-position: center;
   background-size: cover;
@@ -55,5 +41,4 @@ p {
   width: 80%;
   margin-left: auto;
   margin-right: auto;
-  
 }
