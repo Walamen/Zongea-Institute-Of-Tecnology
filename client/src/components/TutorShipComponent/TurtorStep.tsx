@@ -5,8 +5,8 @@ import img from "../../asset/images/Tutor Sample.png"
 
 const TutorSteps: React.FC = () => {
   return (
-    <section className="bg-white py-12 md:px-40">
-      <div className="max-w-6xl mx-auto px-4 flex flex-col md:flex-row items-center md:items-start gap-8">
+    <section className="bg-white py-16 md:py-24">
+      <div className="container flex flex-col md:flex-row items-center md:items-start gap-8">
         {/* Left Side: Steps */}
         <div className="md:w-1/2">
           <h2 className="font-noto text-3xl font-bold text-primary mb-6">

@@ -4,7 +4,8 @@ import { Link } from 'react-router-dom';
 
 export default function WorkForce() {
   return (
-    <section className="px-4 md:px-28 md:pt-20 pt-10 pb-4 md:pb-20 bg-white">
+    <section className="py-16 md:py-24 bg-white">
+      <div className="container">
       {/* First Section */}
       <div className="flex flex-col md:flex-row items-center justify-between gap-8 md:gap-12 h-auto">
         <div className="w-full md:w-[45%] text-center md:text-left mb-8 md:mb-0">
@@ -69,6 +70,7 @@ export default function WorkForce() {
             Support Our Mission
           </Link>
         </div>
+      </div>
       </div>
     </section>
   );

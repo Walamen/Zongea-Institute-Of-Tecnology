@@ -13,8 +13,8 @@ interface CardProps {
 
 function FeaturesSection() {
   return (
-    <div className="w-full h-auto bg-secondary px-0 py-32 md:px-28">
-      <div className="container mx-auto">
+    <section className="py-16 md:py-24 bg-secondary">
+      <div className="container">
         <h2 className="text-2xl font-noto font-bold text-primary mb-4 md:text-left">
           Study at ZIT
         </h2>
@@ -51,7 +51,7 @@ function FeaturesSection() {
           />
         </div>
       </div>
-    </div>
+    </section>
   );
 }
 

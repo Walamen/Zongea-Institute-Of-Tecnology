@@ -4,7 +4,7 @@ import { Link } from "react-router-dom";
 export default function HeroSection() {
   return (
     <section
-      className="relative flex items-end text-white py-10 px-6 md:px-40"
+      className="relative flex items-end text-white py-10"
       style={{
         backgroundImage: `url(${heroImage})`,
         backgroundSize: "cover",
@@ -15,7 +15,8 @@ export default function HeroSection() {
       <div className="absolute inset-0 bg-primary/40 "></div>
 
       {/* Content */}
-      <div className="relative z-10 max-w-[600px]">
+      <div className="container relative z-10">
+      <div className="max-w-[600px]">
         <h1 className="font-noto md:text-3xl text-2xl font-bold mb-10" >
           Empowering Futures Through Mentorship, Tutoring, and Teaching
         </h1>
@@ -28,6 +29,7 @@ export default function HeroSection() {
             Get Involved 
           </Link>
         </div>
+      </div>
       </div>
     </section>
   );

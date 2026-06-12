@@ -2,8 +2,8 @@ import img from "../../asset/images/OT image .jpg"
 // src/components/InfoSection.tsx
 export default function InfoSection() {
     return (
-        <section className="py-20 px-4 md:px-40  bg-gray-100 ">
-            <div className=" mx-auto flex flex-col md:flex-row items-center justify-between">
+        <section className="py-16 md:py-24 bg-gray-100">
+            <div className="container flex flex-col md:flex-row items-center justify-between">
                 {/* Left Image */}
                 <div className="md:w-[35%] bg-white">
                     <img src={img} alt="Speaker" className="rounded-lg shadow-lg h-[40rem] w-[100%] max-h-[400px]" loading="lazy" decoding="async" />

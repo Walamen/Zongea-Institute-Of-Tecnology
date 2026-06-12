@@ -26,7 +26,8 @@ const programs = [
 
 export default function ProgramsSection() {
   return (
-    <section className="py-16 px-4 md:px-40 text-center bg-white">
+    <section className="py-16 md:py-24 text-center bg-white">
+      <div className="container">
       <h2 className="font-noto text-3xl font-bold max-w-[500px] mx-auto text-primary">
         The Three Pillars of the Impact & Connect Center - TTM
       </h2>
@@ -46,6 +47,7 @@ export default function ProgramsSection() {
             </Link>
           </div>
         ))}
+      </div>
       </div>
     </section>
   );

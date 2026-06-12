@@ -4,8 +4,8 @@ import { FaGraduationCap, FaChalkboardTeacher } from "react-icons/fa";
 
 const Benefits: React.FC = () => {
   return (
-    <section className="bg-white py-20 md:px-40">
-      <div className="max-w-6xl mx-auto px-4">
+    <section className="bg-white py-16 md:py-24">
+      <div className="container">
         <div className="flex flex-col md:flex-row justify-between md:items-center">
           {/* Left Side: Heading */}
           <div className="md:w-1/3 mb-6 md:mb-0">

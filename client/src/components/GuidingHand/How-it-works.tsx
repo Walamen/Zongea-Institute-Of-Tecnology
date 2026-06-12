@@ -3,7 +3,8 @@ import img from "../../asset/images/Hero-guilding-hand.jpg";
 
 const HowItWorks: React.FC = () => {
   return (
-    <section className="bg-white py-20 px-6 md:px-40">
+    <section className="bg-white py-16 md:py-24">
+      <div className="container">
       {/* Two-column grid: left for text, right for illustration */}
       <div className="grid grid-cols-1 md:grid-cols-2 gap-8 items-center">
         
@@ -86,6 +87,7 @@ const HowItWorks: React.FC = () => {
             decoding="async"
           />
         </div>
+      </div>
       </div>
     </section>
   );

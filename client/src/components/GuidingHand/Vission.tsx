@@ -26,8 +26,8 @@ const VisionSection: React.FC = () => {
   ];
 
   return (
-    <section className="bg-white py-20 px-6 md:px-40">
-      <div className="w-9xl mx-auto text-center">
+    <section className="bg-white py-16 md:py-24">
+      <div className="container text-center">
         {/* Heading */}
         <h2 className="font-noto text-3xl md:text-4xl font-bold text-primary">
           Our Vision for the Future

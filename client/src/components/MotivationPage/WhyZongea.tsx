@@ -23,7 +23,8 @@ export default function TeachSomeone() {
   ];
 
   return (
-    <section className="flex flex-col md:flex-row md:gap-8 items-center justify-between px-4 md:px-28 pt-10 md:pt-20 pb-8 md:pb-20 bg-white">
+    <section className="py-16 md:py-24 bg-white">
+    <div className="container flex flex-col md:flex-row md:gap-8 items-center justify-between">
     {/* Left Side */}
     <div className="w-full md:w-2/5 md:text-left">
       <h2 className="font-noto text-xl md:text-2xl font-bold text-primary md:w-[130%] w-[90%] md:my-2 mb-4">
@@ -62,6 +63,7 @@ export default function TeachSomeone() {
           decoding="async"
         />
       </div>
+    </div>
     </div>
   </section>
   );

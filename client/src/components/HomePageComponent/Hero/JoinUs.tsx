@@ -2,7 +2,8 @@ import image from "../../../asset/images/Graduation-Bg-Img.jpg";
 
 export default function JoinUs() {
   return (
-    <section className=" bg-primary text-white h-full flex flex-col md:flex-row  items-center justify-between px-4 md:px-28 py-20">
+    <section className="bg-primary text-white py-16 md:py-24">
+      <div className="container flex flex-col md:flex-row items-center justify-between">
       {/* Left Side - Image */}
       <img
         src={image}
@@ -24,6 +25,7 @@ export default function JoinUs() {
         <button className="mt-10 px-6 font-sans py-2 border border-white bg-primary text-white  rounded-lg hover:bg-white hover:text-primary hover:font-extrabold transition-all w-full md:w-auto">
           Become a Teacher
         </button>
+      </div>
       </div>
     </section>
   );

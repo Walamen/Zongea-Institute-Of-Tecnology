@@ -5,8 +5,8 @@ import { Link } from "react-router-dom";
 
 const WhyJoin: React.FC = () => {
     return (
-        <section className="bg-white py-20 px-2 md:px-40">
-            <div className="max-w-6xl mx-auto px-4">
+        <section className="bg-white py-16 md:py-24">
+            <div className="container">
                 <div className="flex flex-col  justify-between md:items-center">
                     {/* Left Side: Heading */}
                     <div className=" mb-6 md:mb-0">
