@@ -5,8 +5,8 @@ export default function StudyAtZit() {
  
 
   return (
-    <div className="max-w-8xl mx-auto font-sans bg-white text-dparacolor">
-      <section className="py-16 lg:px-32 md:px-60 px-2 bg-gray-200 relative">
+    <section className="py-16 md:py-24 bg-gray-200">
+      <div className="container">
         <div className="flex flex-col justify-center text-center lg:text-left">
           <h2 className="font-noto text-2xl font-bold text-primary">Study at ZIT</h2>
           <p className="mt-2 font-roboto text-dparacolor md:w-[44rem] md:px-0  px-6">
@@ -31,7 +31,7 @@ export default function StudyAtZit() {
             </div>
           </div>
         </div>
-      </section>
-    </div>
+      </div>
+    </section>
   );
 }

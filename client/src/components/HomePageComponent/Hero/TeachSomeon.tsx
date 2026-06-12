@@ -4,9 +4,10 @@ import {Link } from 'react-router-dom'
 
 export default function TeachSomeone() {
   return (
-    <section className=" flex flex-col md:flex-row items-center justify-between px-4 md:px-40 pt-16 pb-4 md:pb-20 bg-white">
+    <section className="py-16 md:py-24 bg-white">
+      <div className="container flex flex-col md:flex-row items-center justify-between">
       {/* Left Side - Text Content */}
-      <div className="w-full  md:w-2/7  md:text-left">
+      <div className="w-full md:w-2/7 md:text-left">
        
         <h2 className="text-2xl font-noto md:text-2xl font-bold text-primary w-[90%] mt-2">
           Will You Step Up and Make a Difference?
@@ -34,6 +35,7 @@ export default function TeachSomeone() {
             decoding="async"
           />
         </div>
+      </div>
       </div>
     </section>
   );

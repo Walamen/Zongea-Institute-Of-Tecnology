@@ -36,9 +36,10 @@ export default function TutorshipSection() {
   ];
 
   return (
-    <section className="flex flex-col md:flex-row items-center justify-between px-6 md:px-16 lg:px-28 py-16 bg-white">
+    <section className="py-16 md:py-24 bg-white">
+      <div className="container flex flex-col md:flex-row items-center justify-between">
       {/* Left Side - 2x2 Image Grid */}
-        <div className="w-full md:w-1/2 md:pr-8  md:mt-0 md:pl-10  md:text-left">
+        <div className="w-full md:w-1/2 md:pr-8 md:mt-0 md:pl-10 md:text-left">
             <h3 className="text-lg font-noto font-medium text-primary mb-4">Empower, Educate, Inspire</h3>
             <h2 className="text-xl font-noto md:text-2xl font-bold text-primary mt-2">
             Join Our Community of Educators and Learners
@@ -71,6 +72,7 @@ export default function TutorshipSection() {
             </div>
           </div>
         ))}
+      </div>
       </div>
     </section>
   );

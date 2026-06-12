@@ -37,7 +37,8 @@ export default function TTM() {
   };
 
   return (
-    <section className=" bg-gray-100 h-auto px-4 md:px-28 py-20">
+    <section className="py-16 md:py-24 bg-gray-100">
+      <div className="container">
       {/* Heading Section */}
       <h2 className="text-2xl font-bold font-noto text-primary">
         Opportunities to Educate, Inspire, and Lead      
@@ -92,6 +93,7 @@ export default function TTM() {
 
           </div>
         </div>
+      </div>
       </div>
     </section>
   );

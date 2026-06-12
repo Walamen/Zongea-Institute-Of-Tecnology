@@ -41,8 +41,8 @@ const ApproachCard = memo(({ approach, index }: { approach: typeof approaches[0]
 
 const OurApproach = () => {
   return (
-    <div className="max-w-8xl mx-auto font-sans bg-white text-dparacolor">
-      <section className="py-16 lg:px-32 md:px-60 px-2 bg-gray-100 relative">
+    <section className="py-16 md:py-24 bg-gray-100">
+      <div className="container">
         <div className="text-center mb-12">
           <h2 className="text-xl font-noto md:text-2xl font-bold mb-4 text-primary">
             Our Approach
@@ -56,8 +56,8 @@ const OurApproach = () => {
             <ApproachCard key={approach.title} approach={approach} index={index} />
           ))}
         </div>
-      </section>
-    </div>
+      </div>
+    </section>
   );
 };
 

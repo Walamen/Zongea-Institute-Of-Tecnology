@@ -81,7 +81,8 @@ const SuccessStory = () => {
     
 
     return (
-        <div className="w-full bg-white mx-auto px-6 md:px-10 h-full py-16 overflow-hidden">
+        <section className="py-16 md:py-24 bg-white overflow-hidden">
+          <div className="container">
             <h2 className="text-3xl font-noto font-bold text-primary text-center mb-4">Our Testimonials</h2>
             <p className="text-lg font-roboto text-dparacolor text-center max-w-3xl mx-auto mb-1">
                 We provide aspiring tech professionals with the skills and knowledge to succeed. Discover why our students choose ZIT, and why so many of our graduates return to teach, mentor, and inspire the next generation.
@@ -187,7 +188,8 @@ const SuccessStory = () => {
                     ))}
                 </div>
             </div>
-        </div>
+          </div>
+        </section>
     );
 };
 

@@ -76,8 +76,8 @@ const ProgramCard = memo(({ program }: { program: typeof programs[0] }) => {
 
 const ProgramsWeOffer = () => {
   return (
-    <section id="programs" title="Programs section" className="relative bg-gray-200">
-      <div className="container mx-auto px-4">
+    <section id="programs" className="py-16 md:py-24 bg-gray-200">
+      <div className="container">
         {/* Heading */}
         <div className="text-center mb-12">
           <h2 className="text-xl font-noto md:text-2xl font-bold mb-4 text-primary">
