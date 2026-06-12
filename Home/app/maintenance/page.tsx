@@ -10,7 +10,7 @@ export const metadata: Metadata = {
 
 export default function MaintenancePage() {
   return (
-    <div className="relative h-full flex flex-col bg-canvas overflow-hidden">
+    <div className="h-full flex flex-col bg-canvas  ">
 
       {/* Subtle grid background */}
       <div
@@ -48,21 +48,26 @@ export default function MaintenancePage() {
       </header>
 
       {/* Two-column body —  */}
-      <div className="relative z-10 flex-1  flex flex-col lg:flex-row px-10">
+      <div className=" lg:h-[90vh] grid grid-cols-1 lg:grid-cols-2 ">
 
         {/* Left — maintenance content */}
-        <div className="flex-1  flex flex-col items-center justify-center text-center px-8 py-8 border-b lg:border-b-0 lg:border-r border-primary/10">
+        <div className="flex-1   flex flex-col items-center justify-center text-center px-8 py-8 border-b lg:border-b-0 lg:border-r border-primary/10">
 
-          <div className="w-14 h-14 rounded-full border border-primary/10 bg-primary/5 flex items-center justify-center mb-4">
-            <Settings size={24} strokeWidth={1.5} className="text-primary" />
-          </div>
+          <div className="relative w-48 h-48 flex items-center justify-center mb-6">
+  <div className="absolute inset-0 rounded-full border-8 border-primary/20 border-t-primary animate-[spin_6s_linear_infinite]" />
 
+  <div className="absolute inset-3 rounded-full border-8 border-primary/10 border-b-secondary animate-[spin_6s_linear_infinite_reverse]" />
+
+  <div className="w-28 h-28 rounded-full bg-primary/5 flex items-center justify-center">
+    <Settings className="text-primary" size={64} />
+  </div>
+</div>
           <p className="text-2xs font-bold uppercase tracking-widest text-secondary mb-2">
             Site Maintenance
           </p>
           <div className="w-8 h-[3px] bg-secondary mb-4" />
 
-          <h1 className="font-display font-black text-primary leading-[1.05] tracking-tight text-[clamp(26px,3.5vw,48px)] mb-4">
+          <h1 className="font-display font-black text-primary leading-[1.2] tracking-tight text-[clamp(32px,4.5vw,64px)] mb-4">
             We&rsquo;re Coming<br />Back Soon.
           </h1>
 
@@ -75,7 +80,7 @@ export default function MaintenancePage() {
         </div>
 
         {/* Right — contact form, scrolls internally if viewport is very short */}
-        <div className="lg:w-[46%] xl:w-[44%] bg-white flex flex-col px-8 sm:px-12 py-8 overflow-y-auto">
+        <div className="bg-white flex flex-col justify-center  px-8 sm:px-12 py-8">
 
           <div className="mb-5">
             <p className="text-2xs font-bold uppercase tracking-widest text-secondary mb-2">
@@ -83,7 +88,7 @@ export default function MaintenancePage() {
             </p>
             <div className="w-8 h-[3px] bg-secondary mb-4" />
             <h2 className="font-display font-black text-primary text-[clamp(20px,2.5vw,28px)] leading-tight mb-2">
-              Reach Out to Us
+              Reach Out to Uss
             </h2>
             <p className="text-sm text-stone leading-relaxed">
               Our team will respond as soon as we&rsquo;re back up and running.
@@ -95,7 +100,7 @@ export default function MaintenancePage() {
       </div>
 
       {/* Footer */}
-      <footer className="relative z-10 flex-shrink-0 flex flex-col sm:flex-row items-center justify-between gap-1 px-6 sm:px-10 py-3 border-t border-primary/10 bg-canvas">
+      <footer className=" flex-shrink-0 flex flex-col sm:flex-row items-center justify-between gap-1 px-6 sm:px-10 py-3 border-t border-primary/10 bg-canvas">
         <p className="text-2xs text-stone tracking-wide">
           © 2026 Zongea Institute of Technology. All rights reserved.
         </p>
