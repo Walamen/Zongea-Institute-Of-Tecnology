@@ -23,24 +23,24 @@ const HowWeTeach = () => {
         <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8">
           {[
             {
-              stat: ‘Step 1’,
-              label: ‘Teach’,
-              description: ‘Learn from Experts, Master the Basics’,
+              stat: 'Step 1',
+              label: 'Teach',
+              description: 'Learn from Experts, Master the Basics',
             },
             {
-              stat: ‘Step 2’,
-              label: ‘Tutor’,
-              description: ‘One-on-One Support to Strengthen Your Skills’,
+              stat: 'Step 2',
+              label: 'Tutor',
+              description: 'One-on-One Support to Strengthen Your Skills',
             },
             {
-              stat: ‘Step 3’,
-              label: ‘Mentor’,
-              description: "Guidance from Professionals Who’ve Been There",
+              stat: 'Step 3',
+              label: 'Mentor',
+              description: "Guidance from Professionals Who've Been There",
             },
             {
-              stat: ‘Step 4’,
-              label: ‘Apply & Grow’,
-              description: ‘Career placement’,
+              stat: 'Step 4',
+              label: 'Apply & Grow',
+              description: 'Career placement',
             },
           ].map((stat, index) => (
             <div key={index} className="relative">
