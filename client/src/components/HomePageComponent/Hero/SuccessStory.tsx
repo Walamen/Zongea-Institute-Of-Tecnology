@@ -1,6 +1,5 @@
 import { useState, useEffect, useRef, useCallback } from "react";
 import { Quote } from "lucide-react";
-import AnimateOnScroll from "../../common/AnimateOnScroll";
 import image1 from "../../../asset/images/Alfred.jpg";
 import image2 from "../../../asset/images/Abel B. Winn.jpg";
 import image3 from "../../../asset/images/Paulfina.jpg";
@@ -83,14 +82,10 @@ const SuccessStory = () => {
 
     return (
         <div className="w-full bg-white mx-auto px-6 md:px-10 h-full py-16 overflow-hidden">
-              <AnimateOnScroll animation="slideDown">
-                <h2 className="text-3xl font-noto font-bold text-primary text-center mb-4">Our Testimonials</h2>
-            </AnimateOnScroll>
-            <AnimateOnScroll animation="fadeIn" delay={200}>
-                <p className="text-lg font-roboto text-dparacolor text-center max-w-3xl mx-auto mb-1">
-                 We provide aspiring tech professionals with the skills and knowledge to succeed. Discover why our students choose ZIT, and why so many of our graduates return to teach, mentor, and inspire the next generation.
-                </p>
-            </AnimateOnScroll>
+            <h2 className="text-3xl font-noto font-bold text-primary text-center mb-4">Our Testimonials</h2>
+            <p className="text-lg font-roboto text-dparacolor text-center max-w-3xl mx-auto mb-1">
+                We provide aspiring tech professionals with the skills and knowledge to succeed. Discover why our students choose ZIT, and why so many of our graduates return to teach, mentor, and inspire the next generation.
+            </p>
 
             <div className="relative w-full max-w-4xl mx-auto">
                 {/* Carousel container */}
