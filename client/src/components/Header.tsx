@@ -119,7 +119,7 @@ function Header() {
         {/* Logo */}
         <div className="flex lg:flex-1">
           <NavLink to="/" aria-label="Home">
-            <img src={Logo} alt="Zongea Logo" className="w-26 h-20" />
+            <img src={Logo} alt="Zongea Logo" className="w-26 h-20" loading="lazy" decoding="async" />
           </NavLink>
         </div>
 
@@ -238,7 +238,7 @@ function Header() {
           <div className="fixed inset-y-0 right-0 z-50 w-full overflow-y-auto bg-white px-6 py-6 sm:max-w-sm">
               <div className="flex items-center justify-between">
                 <NavLink to="/" onClick={() => setMobileMenuOpen(false)}>
-                  <img src={Logo} alt="Zongea Logo" className="h-16" />
+                  <img src={Logo} alt="Zongea Logo" className="h-16" loading="lazy" decoding="async" />
                 </NavLink>
                 <button 
                   className="p-1 text-gray-500 hover:text-gray-700"
@@ -383,7 +383,7 @@ function Header() {
 
           <div className="fixed top-0 right-0 h-screen overflow-y-auto w-full sm:w-96 bg-white shadow-lg z-50">
               <div className="bg-primary text-white p-4 flex justify-between items-center">
-                <img src={Logo} alt="Logo" className="h-10" />
+                <img src={Logo} alt="Logo" className="h-10" loading="lazy" decoding="async" />
                 <button 
                   onClick={() => setLeftModalOpen(false)}
                   className="p-1 text-white hover:text-secondary"

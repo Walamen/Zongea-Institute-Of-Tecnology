@@ -54,6 +54,8 @@ export default function TTM() {
             src={tabContent[activeTab].image}
             alt={`${activeTab} Image`}
             className="w-full  h-[100%]  rounded-lg shadow-md object-cover"
+            loading="lazy"
+            decoding="async"
           />
         </div>
 

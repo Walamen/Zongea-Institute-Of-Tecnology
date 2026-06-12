@@ -25,6 +25,8 @@ const TProgramOverview: React.FC = () => {
             src={img}
             alt="ICC Tutoring Program"
             className="w-full max-w-md h-auto object-cover rounded shadow"
+            loading="lazy"
+            decoding="async"
           />
         </div>
       </div>

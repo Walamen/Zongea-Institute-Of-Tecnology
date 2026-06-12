@@ -1,0 +1,123 @@
+<h2>ZIT Site — Diagnostic Findings</h2>
+<p class="subtitle">Here's what I found after analyzing the full codebase. Let me know which area matters most to tackle first.</p>
+
+<div class="section">
+  <h3>🔴 Critical Performance Issues</h3>
+  <div style="display:grid;grid-template-columns:1fr 1fr;gap:12px;margin-top:12px;">
+    <div style="background:#fff1f1;border-left:4px solid #e53e3e;padding:14px;border-radius:6px;">
+      <strong>Three.js loaded globally</strong><br>
+      <span style="font-size:13px;color:#555"><code>@react-three/fiber</code> + <code>three</code> ≈ 600KB–1.4MB added to your bundle — even on pages that never use 3D</span>
+    </div>
+    <div style="background:#fff1f1;border-left:4px solid #e53e3e;padding:14px;border-radius:6px;">
+      <strong>Daily.js loaded in dependencies</strong><br>
+      <span style="font-size:13px;color:#555"><code>@daily-co/daily-js</code> is a ~2MB video conferencing library sitting in your deps — likely unused on the site</span>
+    </div>
+    <div style="background:#fff1f1;border-left:4px solid #e53e3e;padding:14px;border-radius:6px;">
+      <strong>Stripe initialized twice</strong><br>
+      <span style="font-size:13px;color:#555"><code>loadStripe()</code> is called in both <code>main.tsx</code> and <code>App.tsx</code> — loads the Stripe script twice on every page</span>
+    </div>
+    <div style="background:#fff1f1;border-left:4px solid #e53e3e;padding:14px;border-radius:6px;">
+      <strong>PayPal + Stripe wrap entire app</strong><br>
+      <span style="font-size:13px;color:#555">Both payment providers initialize on every page visit, not just the donation page — unnecessary network overhead</span>
+    </div>
+  </div>
+</div>
+
+<div class="section">
+  <h3>🟠 Image & Asset Issues</h3>
+  <div style="display:grid;grid-template-columns:1fr 1fr;gap:12px;margin-top:12px;">
+    <div style="background:#fffbea;border-left:4px solid #d69e2e;padding:14px;border-radius:6px;">
+      <strong>No lazy loading on images</strong><br>
+      <span style="font-size:13px;color:#555">80+ image assets, none have <code>loading="lazy"</code> — all downloaded immediately on page load</span>
+    </div>
+    <div style="background:#fffbea;border-left:4px solid #d69e2e;padding:14px;border-radius:6px;">
+      <strong>No WebP format</strong><br>
+      <span style="font-size:13px;color:#555">All images are raw <code>.jpg</code> / <code>.jpeg</code> — no WebP conversion means 30–50% larger file sizes</span>
+    </div>
+    <div style="background:#fffbea;border-left:4px solid #d69e2e;padding:14px;border-radius:6px;">
+      <strong>Hero uses CSS background-image swap</strong><br>
+      <span style="font-size:13px;color:#555">Slideshow uses <code>style.backgroundImage</code> transition — forces full repaint on every slide change. Not GPU-accelerated</span>
+    </div>
+    <div style="background:#fffbea;border-left:4px solid #d69e2e;padding:14px;border-radius:6px;">
+      <strong>No Suspense fallback in App.tsx</strong><br>
+      <span style="font-size:13px;color:#555">Lazy-loaded routes have no <code>&lt;Suspense&gt;</code> boundary — can cause blank screens while pages load</span>
+    </div>
+  </div>
+</div>
+
+<div class="section">
+  <h3>🟡 UI Spacing Inconsistencies</h3>
+  <div style="overflow-x:auto;margin-top:12px;">
+    <table style="width:100%;border-collapse:collapse;font-size:13px;">
+      <thead>
+        <tr style="background:#f0f4ff;">
+          <th style="padding:10px;text-align:left;border-bottom:2px solid #ddd;">Section</th>
+          <th style="padding:10px;text-align:left;border-bottom:2px solid #ddd;">Horizontal Padding</th>
+          <th style="padding:10px;text-align:left;border-bottom:2px solid #ddd;">Vertical Padding</th>
+          <th style="padding:10px;text-align:left;border-bottom:2px solid #ddd;">Layout System</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr style="border-bottom:1px solid #eee;">
+          <td style="padding:10px;font-weight:600;">HeroSection</td>
+          <td style="padding:10px;color:#e53e3e;"><code>md:px-31</code> ❌ invalid class</td>
+          <td style="padding:10px;"><code>h-[90vh]</code></td>
+          <td style="padding:10px;color:#888;">ad-hoc %</td>
+        </tr>
+        <tr style="background:#fafafa;border-bottom:1px solid #eee;">
+          <td style="padding:10px;font-weight:600;">TTM Section</td>
+          <td style="padding:10px;"><code>px-4 md:px-28</code></td>
+          <td style="padding:10px;"><code>py-20</code></td>
+          <td style="padding:10px;color:#888;">raw padding</td>
+        </tr>
+        <tr style="border-bottom:1px solid #eee;">
+          <td style="padding:10px;font-weight:600;">TutorshipSection</td>
+          <td style="padding:10px;"><code>px-6 md:px-16 lg:px-28</code></td>
+          <td style="padding:10px;"><code>py-16</code></td>
+          <td style="padding:10px;color:#888;">raw padding</td>
+        </tr>
+        <tr style="background:#fafafa;border-bottom:1px solid #eee;">
+          <td style="padding:10px;font-weight:600;">HowWeTeach</td>
+          <td style="padding:10px;"><code>container mx-auto px-4</code></td>
+          <td style="padding:10px;"><code>py-6 pb-14</code> (via .section)</td>
+          <td style="padding:10px;color:#888;">container</td>
+        </tr>
+        <tr style="border-bottom:1px solid #eee;">
+          <td style="padding:10px;font-weight:600;">StudySucceed</td>
+          <td style="padding:10px;"><code>px-4</code> + container</td>
+          <td style="padding:10px;"><code>py-16</code></td>
+          <td style="padding:10px;color:#888;">mixed</td>
+        </tr>
+      </tbody>
+    </table>
+  </div>
+  <p style="margin-top:10px;font-size:13px;color:#666;">Result: sections look visually misaligned — some text runs edge-to-edge, others sit in a narrow centered column, creating a jagged rhythm as you scroll.</p>
+</div>
+
+<div class="section">
+  <h3>First question — where do we start?</h3>
+  <p class="subtitle">Both problems are real. Which should we tackle first?</p>
+  <div class="options">
+    <div class="option" data-choice="perf-first" onclick="toggleSelect(this)">
+      <div class="letter">A</div>
+      <div class="content">
+        <h3>Performance first</h3>
+        <p>Fix bundle size, image loading, and payment provider scoping. Users notice load time before they notice spacing.</p>
+      </div>
+    </div>
+    <div class="option" data-choice="spacing-first" onclick="toggleSelect(this)">
+      <div class="letter">B</div>
+      <div class="content">
+        <h3>Spacing / UI first</h3>
+        <p>Establish a consistent spacing system across all sections so the site looks polished and professional immediately.</p>
+      </div>
+    </div>
+    <div class="option" data-choice="both-together" onclick="toggleSelect(this)">
+      <div class="letter">C</div>
+      <div class="content">
+        <h3>Both together in one plan</h3>
+        <p>Design a single implementation plan that addresses performance and spacing in parallel, section by section.</p>
+      </div>
+    </div>
+  </div>
+</div>

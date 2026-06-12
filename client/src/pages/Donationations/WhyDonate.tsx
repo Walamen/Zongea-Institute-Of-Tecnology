@@ -43,6 +43,8 @@ const WhyDonate = () => {
           src={image} // Replace with actual image URL
           alt="Student Learning"
           className="rounded-lg w-[65%] max-w-sm h-[85%] shadow-lg"
+          loading="lazy"
+          decoding="async"
         />
       </div>
     </section>

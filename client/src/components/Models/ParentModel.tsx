@@ -108,10 +108,12 @@ export default function ParentModel() {
         {/* Logo */}
         <div className="flex lg:flex-1">
           <Link to="/" aria-label="Home">
-            <img 
-              src={Logo} 
-              alt="Zongea Logo" 
+            <img
+              src={Logo}
+              alt="Zongea Logo"
               className="w-24 h-12 sm:w-28 sm:h-14 md:w-40 md:h-16 lg:w-48 lg:h-20"
+              loading="lazy"
+              decoding="async"
             />
           </Link>
         </div>
@@ -126,10 +128,12 @@ export default function ParentModel() {
   <div className="container sm:mx-auto flex flex-col lg:flex-row items-center gap-20 lg:items-start pt-4 md:pt-8 lg:pt-20">
     {/* Image and text section - appears below form on mobile */}
     <div className="text-primary mx-8 xl:mx-16 space-y-3 w-[90%] lg:w-[34%] lg:mr-52 mt-24">
-      <img 
-        src={LeftImg} 
-        className="lg:w-[30rem] w-full lg:max-w-[60rem] md:max-w-[40rem] sm:max-w-[28rem] h-auto mx-auto" 
-        alt="Parent" 
+      <img
+        src={LeftImg}
+        className="lg:w-[30rem] w-full lg:max-w-[60rem] md:max-w-[40rem] sm:max-w-[28rem] h-auto mx-auto"
+        alt="Parent"
+        loading="lazy"
+        decoding="async"
       />
       <h3 className="font-noto text-lg sm:text-xl md:text-2xl text-primary lg:text-h3 text-center lg:text-left">
         Support Your Child’s <br /> Educational Journey

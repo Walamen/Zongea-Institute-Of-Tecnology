@@ -6,7 +6,7 @@ export default function InfoSection() {
             <div className=" mx-auto flex flex-col md:flex-row items-center justify-between">
                 {/* Left Image */}
                 <div className="md:w-[35%] bg-white">
-                    <img src={img} alt="Speaker" className="rounded-lg shadow-lg h-[40rem] w-[100%] max-h-[400px]" />
+                    <img src={img} alt="Speaker" className="rounded-lg shadow-lg h-[40rem] w-[100%] max-h-[400px]" loading="lazy" decoding="async" />
                 </div>
 
                 {/* Right Text */}

@@ -1,0 +1,150 @@
+<h2>Design — Part 2: Spacing System</h2>
+<p class="subtitle">A single layout rule applied to every section — so the site has a consistent visual rhythm as you scroll.</p>
+
+<div class="section">
+  <h3>The Core Rule</h3>
+  <div style="background:#f8faff;border:1px solid #c7d7fd;border-radius:8px;padding:16px;font-size:13px;">
+    <p style="margin:0 0 10px;font-weight:600;">Every section follows this two-layer pattern:</p>
+    <pre style="background:#1e1e1e;color:#d4d4d4;padding:14px;border-radius:6px;font-size:12px;margin:0;">
+&lt;section className="py-16 md:py-24 bg-[color]"&gt;
+  &lt;div className="container"&gt;
+    {/* content here */}
+  &lt;/div&gt;
+&lt;/section&gt;</pre>
+    <ul style="margin-top:10px;padding-left:16px;line-height:2;color:#444;">
+      <li><code>py-16 md:py-24</code> — consistent top/bottom breathing room (64px mobile → 96px desktop)</li>
+      <li><code>container</code> — already defined in index.css as <code>max-w-7xl mx-auto px-4 sm:px-6 lg:px-8</code></li>
+      <li>Hero stays full-bleed (special case) — but its inner content box moves into the container</li>
+    </ul>
+  </div>
+</div>
+
+<div class="section">
+  <h3>Before vs After — Side by Side</h3>
+  <div class="split">
+    <div class="mockup">
+      <div class="mockup-header" style="background:#fee2e2;color:#991b1b;">❌ Before — Each section different</div>
+      <div class="mockup-body" style="padding:0;overflow:hidden;">
+
+        <!-- Hero -->
+        <div style="height:70px;background:#000054;display:flex;align-items:flex-end;padding:0 10% 8px;">
+          <div style="background:rgba(0,0,84,0.7);padding:6px 10px;border-radius:4px 4px 0 0;font-size:10px;color:#fff;width:45%;">
+            Hero content — ml-[8%] ← non-standard offset
+          </div>
+        </div>
+
+        <!-- OurApproach -->
+        <div style="padding:12px 16px;background:#f9fafb;border-bottom:1px solid #e5e7eb;">
+          <div style="font-size:9px;color:#6b7280;margin-bottom:4px;">OurApproach — container mx-auto px-4</div>
+          <div style="background:#e5e7eb;height:20px;border-radius:3px;width:90%;margin:0 auto;"></div>
+        </div>
+
+        <!-- TTM -->
+        <div style="padding:12px 80px;background:#f3f4f6;border-bottom:1px solid #e5e7eb;">
+          <div style="font-size:9px;color:#6b7280;margin-bottom:4px;">TTM — px-4 md:px-28 ← very wide gap</div>
+          <div style="background:#d1d5db;height:20px;border-radius:3px;"></div>
+        </div>
+
+        <!-- TutorshipSection -->
+        <div style="padding:12px 60px;background:#fff;border-bottom:1px solid #e5e7eb;">
+          <div style="font-size:9px;color:#6b7280;margin-bottom:4px;">TutorshipSection — px-6 md:px-16 lg:px-28</div>
+          <div style="background:#e5e7eb;height:20px;border-radius:3px;"></div>
+        </div>
+
+        <!-- HowWeTeach -->
+        <div style="padding:12px 16px;background:#000054;border-bottom:1px solid #e5e7eb;">
+          <div style="font-size:9px;color:#9ca3af;margin-bottom:4px;">HowWeTeach — container px-4 ← narrower</div>
+          <div style="background:#1e3a8a;height:20px;border-radius:3px;width:90%;margin:0 auto;"></div>
+        </div>
+
+        <!-- StudySucceed -->
+        <div style="padding:12px 16px;background:#f9fafb;">
+          <div style="font-size:9px;color:#6b7280;margin-bottom:4px;">StudySucceed — py-16 px-4 + container</div>
+          <div style="background:#e5e7eb;height:20px;border-radius:3px;width:88%;margin:0 auto;"></div>
+        </div>
+
+        <div style="padding:8px;background:#fee2e2;text-align:center;font-size:10px;color:#991b1b;">
+          Content edges shift left/right every section → jarring scroll experience
+        </div>
+      </div>
+    </div>
+
+    <div class="mockup">
+      <div class="mockup-header" style="background:#dcfce7;color:#166534;">✅ After — Unified system</div>
+      <div class="mockup-body" style="padding:0;overflow:hidden;">
+
+        <!-- Hero -->
+        <div style="height:70px;background:#000054;display:flex;align-items:flex-end;padding:0;">
+          <div style="margin-left:calc(50% - 320px);background:rgba(0,0,84,0.7);padding:6px 10px;border-radius:4px 4px 0 0;font-size:10px;color:#fff;width:45%;">
+            Hero content — inside container ✓
+          </div>
+        </div>
+
+        <!-- OurApproach -->
+        <div style="padding:12px 0;background:#f9fafb;border-bottom:1px solid #e5e7eb;">
+          <div style="font-size:9px;color:#6b7280;margin-bottom:4px;padding-left:16px;">OurApproach — py-16 md:py-24 + container</div>
+          <div style="background:#e5e7eb;height:20px;border-radius:3px;width:90%;margin:0 auto;"></div>
+        </div>
+
+        <!-- TTM -->
+        <div style="padding:12px 0;background:#f3f4f6;border-bottom:1px solid #e5e7eb;">
+          <div style="font-size:9px;color:#6b7280;margin-bottom:4px;padding-left:16px;">TTM — py-16 md:py-24 + container ✓</div>
+          <div style="background:#d1d5db;height:20px;border-radius:3px;width:90%;margin:0 auto;"></div>
+        </div>
+
+        <!-- TutorshipSection -->
+        <div style="padding:12px 0;background:#fff;border-bottom:1px solid #e5e7eb;">
+          <div style="font-size:9px;color:#6b7280;margin-bottom:4px;padding-left:16px;">TutorshipSection — py-16 md:py-24 + container ✓</div>
+          <div style="background:#e5e7eb;height:20px;border-radius:3px;width:90%;margin:0 auto;"></div>
+        </div>
+
+        <!-- HowWeTeach -->
+        <div style="padding:12px 0;background:#000054;border-bottom:1px solid #e5e7eb;">
+          <div style="font-size:9px;color:#9ca3af;margin-bottom:4px;padding-left:16px;">HowWeTeach — py-16 md:py-24 + container ✓</div>
+          <div style="background:#1e3a8a;height:20px;border-radius:3px;width:90%;margin:0 auto;"></div>
+        </div>
+
+        <!-- StudySucceed -->
+        <div style="padding:12px 0;background:#f9fafb;">
+          <div style="font-size:9px;color:#6b7280;margin-bottom:4px;padding-left:16px;">StudySucceed — py-16 md:py-24 + container ✓</div>
+          <div style="background:#e5e7eb;height:20px;border-radius:3px;width:90%;margin:0 auto;"></div>
+        </div>
+
+        <div style="padding:8px;background:#dcfce7;text-align:center;font-size:10px;color:#166534;">
+          All content edges align perfectly → clean scroll rhythm
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<div class="section">
+  <h3>What changes in tailwind.config.js</h3>
+  <div style="background:#1e1e1e;color:#d4d4d4;padding:14px;border-radius:8px;font-size:12px;">
+<pre style="margin:0;">// tailwind.config.js — add these spacing tokens
+theme: {
+  extend: {
+    spacing: {
+      'section-sm': '4rem',   // py-section-sm → 64px (mobile)
+      'section-md': '6rem',   // py-section-md → 96px (desktop)
+    }
+    // existing colors + fonts stay unchanged
+  }
+}</pre>
+  </div>
+  <p style="font-size:12px;color:#666;margin-top:8px;">Optional — we can also just use <code>py-16 md:py-24</code> directly without custom tokens. Tokens are cleaner if the team wants to change the rhythm site-wide later in one place.</p>
+</div>
+
+<div class="section">
+  <h3>Sections that get updated</h3>
+  <div style="display:grid;grid-template-columns:1fr 1fr 1fr;gap:8px;font-size:12px;">
+    <div style="background:#f0fdf4;padding:10px;border-radius:6px;"><strong>HomePage</strong><ul style="margin:4px 0 0 14px;color:#555;"><li>HeroSection</li><li>OurApproach</li><li>StudyAtZit</li><li>ProgramsWeOffer</li><li>TTM</li><li>TutorshipSection</li><li>ReadyToStartSec</li><li>TeachSomeone</li><li>HowWeTeach</li><li>SuccessStory</li><li>UpComingEvent</li></ul></div>
+    <div style="background:#eff6ff;padding:10px;border-radius:6px;"><strong>Other Pages</strong><ul style="margin:4px 0 0 14px;color:#555;"><li>CoursesPage</li><li>ContactPage</li><li>AdmissionPage</li><li>MotivationPage</li><li>MakeImpact pages</li><li>Course detail pages</li></ul></div>
+    <div style="background:#faf5ff;padding:10px;border-radius:6px;"><strong>Components</strong><ul style="margin:4px 0 0 14px;color:#555;"><li>All GuidingHand/*</li><li>MentorShipComponent/*</li><li>TutorShipComponent/*</li><li>Footer</li><li>Header (unchanged)</li></ul></div>
+  </div>
+</div>
+
+<div style="background:#f0fdf4;border:2px solid #22c55e;border-radius:10px;padding:16px;text-align:center;margin-top:8px;">
+  <strong style="font-size:15px;">Does this spacing design look right?</strong>
+  <p style="font-size:13px;color:#555;margin-top:6px;">Reply "yes" and I'll write the full design doc and implementation plan.</p>
+</div>

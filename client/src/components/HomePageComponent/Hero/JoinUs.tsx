@@ -8,6 +8,8 @@ export default function JoinUs() {
         src={image}
         alt="Mentor teaching"
         className="w-[100%]  h-[45vh] md:w-[45%]  md:h-[60vh] rounded-[6%]"
+        loading="lazy"
+        decoding="async"
       />
 
       {/* Right Side - Content */}

@@ -59,6 +59,8 @@ export default function TutorshipSection() {
               src={card.img}
               alt={card.label}
               className="w-full h-48 object-cover rounded-lg group-hover:scale-105 transition-transform duration-300"
+              loading="lazy"
+              decoding="async"
             />
             {/* Overlay with Text */}
             <div className="absolute inset-0 bg-primary/40 flex flex-col justify-end items-baseline pl-4  pb-4 text-center">

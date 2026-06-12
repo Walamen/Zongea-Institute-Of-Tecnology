@@ -82,6 +82,8 @@ const HowItWorks: React.FC = () => {
             src={img}
             alt="How It Works Illustration"
             className="w-full max-w-md rounded-lg shadow-md"
+            loading="lazy"
+            decoding="async"
           />
         </div>
       </div>

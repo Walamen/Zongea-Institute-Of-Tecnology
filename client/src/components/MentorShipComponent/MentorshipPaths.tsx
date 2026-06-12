@@ -12,6 +12,8 @@ const MentorshipPaths: React.FC = () => {
             src={img}
             alt="Mentoring Speaker"
             className="w-full max-w-md  object-cover rounded shadow"
+            loading="lazy"
+            decoding="async"
           />
         </div>
 

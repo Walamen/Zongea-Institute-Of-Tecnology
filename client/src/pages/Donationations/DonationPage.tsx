@@ -491,7 +491,7 @@ console.log("referral code", ref_code)
                         className={`w-full py-2 flex justify-center items-center rounded-lg font-medium transition-colors ${selectedPaymentMethod === "paypal" ? "bg-primary/10 text-white" : "bg-gray-100 text-gray-700 hover:bg-gray-200"
                           }`}
                       >
-                        <img src={paypalImg} className="h-6" />
+                        <img src={paypalImg} className="h-6" loading="lazy" decoding="async" />
                       </button>
                     </div>
                     {formErrors.paymentMethod && (

@@ -102,6 +102,8 @@ export default function TutorModel() {
                 src={Logo}
                 alt="Zongea Logo"
                 className="w-24 h-12 sm:w-28 sm:h-14 md:w-40 md:h-16 lg:w-48 lg:h-20"
+                loading="lazy"
+                decoding="async"
               />
             </Link>
           </div>
@@ -119,6 +121,8 @@ export default function TutorModel() {
               src={LeftImg}
               className="lg:w-[22rem] w-full lg:max-w-[60rem] md:max-w-[40rem] sm:max-w-[28rem] h-[22rem] mx-auto"
               alt="Tutor"
+              loading="lazy"
+              decoding="async"
             />
             <h3 className="font-noto text-lg sm:text-xl md:text-2xl font-semibold lg:text-h3 text-center lg:text-left">
               Become a Tutor <br /> Empower Student Success

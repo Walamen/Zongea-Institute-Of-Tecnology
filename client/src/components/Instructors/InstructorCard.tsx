@@ -8,7 +8,7 @@ interface InstructorCardProps {
 export default function InstructorCard({ name, subject, description, image }: InstructorCardProps) {
   return (
     <div className="bg-white rounded-lg shadow-lg overflow-hidden">
-      <img src={image} alt={name} className="w-full h-60 object-cover" />
+      <img src={image} alt={name} className="w-full h-60 object-cover" loading="lazy" decoding="async" />
       <div className="p-6">
         <h3 className="text-xl text-primary font-bold mb-2">{name}</h3>
         <p className="text-secondary-yellow mb-3">{subject}</p>

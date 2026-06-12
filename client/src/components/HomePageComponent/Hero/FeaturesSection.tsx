@@ -66,7 +66,7 @@ function HoverCard({ imgSrc, title, description, linkText, fullHeight }: CardPro
       onMouseLeave={() => setIsHovered(false)}
     >
       <div className="transition-all duration-500 hover:scale-105 cursor-pointer">
-        <img src={imgSrc} alt={title} className="w-full h-full object-cover rounded-lg" />
+        <img src={imgSrc} alt={title} className="w-full h-full object-cover rounded-lg" loading="lazy" decoding="async" />
       </div>
 
       {/* Custom Hover Card */}
@@ -89,10 +89,12 @@ function FeatureCard({ imgSrc, title, description, linkText }: CardProps) {
   return (
     <div className="flex flex-col md:p-4 rounded-lg transform transition-all duration-300 hover:scale-105">
       <div className="overflow-hidden rounded-lg">
-        <img 
-          src={imgSrc} 
-          alt={title} 
-          className="w-full h-[200px] object-cover rounded-lg transition-transform duration-500 hover:scale-110" 
+        <img
+          src={imgSrc}
+          alt={title}
+          className="w-full h-[200px] object-cover rounded-lg transition-transform duration-500 hover:scale-110"
+          loading="lazy"
+          decoding="async"
         />
       </div>
       <div className="flex flex-col flex-grow mt-4">

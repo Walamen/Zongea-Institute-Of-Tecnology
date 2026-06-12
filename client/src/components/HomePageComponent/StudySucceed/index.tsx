@@ -21,17 +21,23 @@ const StudySucceed = () => {
             src="https://images.unsplash.com/photo-1522202176988-66273c2fd55f?auto=format&fit=crop&q=80"
             alt="Students collaborating"
             className="rounded-lg shadow-lg w-full"
+            loading="lazy"
+            decoding="async"
           />
           <div className="grid grid-cols-2 gap-4">
             <img
               src="https://images.unsplash.com/photo-1524178232363-1fb2b075b655?auto=format&fit=crop&q=80"
               alt="Campus facilities"
               className="rounded-lg shadow-lg w-full"
+              loading="lazy"
+              decoding="async"
             />
             <img
               src="https://images.unsplash.com/photo-1531482615713-2afd69097998?auto=format&fit=crop&q=80"
               alt="Learning activities"
               className="rounded-lg shadow-lg w-full"
+              loading="lazy"
+              decoding="async"
             />
           </div>
         </div>

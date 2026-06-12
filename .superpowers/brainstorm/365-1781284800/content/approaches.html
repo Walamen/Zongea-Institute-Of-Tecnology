@@ -1,0 +1,77 @@
+<h2>Three Approaches to the Full Overhaul</h2>
+<p class="subtitle">Based on your decisions so far, here are three ways to structure the work — pick the one that fits your timeline and risk tolerance.</p>
+
+<div class="options">
+
+  <div class="option" data-choice="recommended" onclick="toggleSelect(this)">
+    <div class="letter">A</div>
+    <div class="content">
+      <h3>Full clean sweep — one plan, all at once <span style="background:#22c55e;color:#fff;font-size:11px;padding:2px 8px;border-radius:99px;margin-left:8px;">Recommended</span></h3>
+      <p>One structured implementation plan covering both performance and spacing in a single branch. Everything gets fixed together: dead deps removed, animations stripped, payment providers scoped, images lazy-loaded + WebP, Suspense added, Vite split configured, and a unified spacing token system applied to every section.</p>
+      <div style="display:grid;grid-template-columns:1fr 1fr;gap:8px;margin-top:12px;font-size:12px;">
+        <div style="background:#f0fdf4;padding:8px;border-radius:6px;">
+          <strong>Performance fixes</strong>
+          <ul style="margin:4px 0 0 14px;color:#555;">
+            <li>Remove Three.js + Daily.js</li>
+            <li>Remove framer-motion + all animations</li>
+            <li>Stripe only on /donate route</li>
+            <li>PayPal only on /donate route</li>
+            <li>Fix duplicate Stripe in main.tsx</li>
+            <li>Add loading="lazy" to all images</li>
+            <li>Add WebP via vite-imagetools</li>
+            <li>Add Suspense fallbacks</li>
+            <li>Vite manual chunk splitting</li>
+          </ul>
+        </div>
+        <div style="background:#eff6ff;padding:8px;border-radius:6px;">
+          <strong>Spacing fixes</strong>
+          <ul style="margin:4px 0 0 14px;color:#555;">
+            <li>Define spacing tokens in tailwind.config</li>
+            <li>One container class for all sections</li>
+            <li>Consistent section vertical rhythm</li>
+            <li>Fix invalid md:px-31 in HeroSection</li>
+            <li>Apply system to every section</li>
+          </ul>
+        </div>
+      </div>
+      <div style="margin-top:10px;font-size:12px;color:#888;">Timeline: 1 focused session. Risk: medium — touches many files, but all changes are mechanical.</div>
+    </div>
+  </div>
+
+  <div class="option" data-choice="perf-only" onclick="toggleSelect(this)">
+    <div class="letter">B</div>
+    <div class="content">
+      <h3>Performance only first, spacing later</h3>
+      <p>Two separate plans. Plan 1 is only about bundle and loading speed — no touching of section layouts. Once deployed and verified fast, Plan 2 tackles spacing as a separate PR. Lower risk per change, easier to review.</p>
+      <div style="margin-top:10px;font-size:12px;color:#888;">Timeline: 2 sessions. Risk: low per PR, but spacing stays broken in the meantime.</div>
+    </div>
+  </div>
+
+  <div class="option" data-choice="section-by-section" onclick="toggleSelect(this)">
+    <div class="letter">C</div>
+    <div class="content">
+      <h3>Section-by-section — fix each page completely</h3>
+      <p>Go page by page: fix all performance + spacing issues for the HomePage first, then CoursesPage, then MakeImpact pages, etc. Each section is done 100% before moving on.</p>
+      <div style="margin-top:10px;font-size:12px;color:#888;">Timeline: multiple sessions. Risk: low, very incremental. Best if you want to verify visually as you go.</div>
+    </div>
+  </div>
+
+</div>
+
+<div class="section" style="background:#fffbea;border:1px solid #d69e2e;border-radius:8px;padding:16px;margin-top:8px;">
+  <strong>Expected impact of Approach A:</strong>
+  <div style="display:grid;grid-template-columns:repeat(3,1fr);gap:12px;margin-top:10px;text-align:center;">
+    <div>
+      <div style="font-size:28px;font-weight:bold;color:#22c55e;">~2.5MB</div>
+      <div style="font-size:12px;color:#555;">removed from bundle<br>(Three.js + Daily.js + framer-motion)</div>
+    </div>
+    <div>
+      <div style="font-size:28px;font-weight:bold;color:#3b82f6;">30–50%</div>
+      <div style="font-size:12px;color:#555;">smaller image payloads<br>via WebP + lazy loading</div>
+    </div>
+    <div>
+      <div style="font-size:28px;font-weight:bold;color:#a855f7;">~3s faster</div>
+      <div style="font-size:12px;color:#555;">estimated Time to Interactive<br>on first visit</div>
+    </div>
+  </div>
+</div>

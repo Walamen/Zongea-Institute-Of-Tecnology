@@ -1,0 +1,53 @@
+<h2>Animation Library: Framer Motion</h2>
+<p class="subtitle"><code>framer-motion</code> is used in 6 files and adds ~140KB to your bundle. Here's exactly what it does on your site — and your options.</p>
+
+<div class="section">
+  <h3>What framer-motion currently powers</h3>
+  <div style="display:grid;grid-template-columns:1fr 1fr 1fr;gap:12px;margin-top:10px;">
+    <div style="background:#f0f4ff;border-radius:8px;padding:14px;">
+      <div style="font-size:20px;margin-bottom:6px;">🃏</div>
+      <strong style="font-size:13px;">GlassCard</strong>
+      <p style="font-size:12px;color:#555;margin-top:4px;">Fade-up entrance + subtle hover scale on cards in OurApproach, HowWeTeach, ProgramsWeOffer</p>
+    </div>
+    <div style="background:#f0f4ff;border-radius:8px;padding:14px;">
+      <div style="font-size:20px;margin-bottom:6px;">📜</div>
+      <strong style="font-size:13px;">ParallaxSection</strong>
+      <p style="font-size:12px;color:#555;margin-top:4px;">Scroll-driven vertical offset on cards — elements shift up/down as you scroll past them</p>
+    </div>
+    <div style="background:#f0f4ff;border-radius:8px;padding:14px;">
+      <div style="font-size:20px;margin-bottom:6px;">🎈</div>
+      <strong style="font-size:13px;">FloatingElement</strong>
+      <p style="font-size:12px;color:#555;margin-top:4px;">Infinite slow float animation (not visible anywhere on the live pages — unused at runtime)</p>
+    </div>
+  </div>
+</div>
+
+<div class="section">
+  <h3>Your options</h3>
+  <div class="options">
+    <div class="option" data-choice="keep-split" onclick="toggleSelect(this)">
+      <div class="letter">A</div>
+      <div class="content">
+        <h3>Keep it — split into a separate lazy chunk</h3>
+        <p>Framer-motion gets its own async bundle. It only loads after the main page renders, so it never blocks initial paint. The animations (parallax, glass cards) stay exactly as they are. <strong>Best for polish.</strong></p>
+        <div style="margin-top:8px;font-size:12px;color:#555;">Bundle impact: removed from critical path. Loads ~1s after first paint.</div>
+      </div>
+    </div>
+    <div class="option" data-choice="replace-css" onclick="toggleSelect(this)">
+      <div class="letter">B</div>
+      <div class="content">
+        <h3>Replace with CSS animations</h3>
+        <p>Use the existing <code>AnimateOnScroll</code> component (already in your code) for card entrances. Remove parallax. Remove framer-motion entirely — saves 140KB. <strong>Best for maximum speed.</strong></p>
+        <div style="margin-top:8px;font-size:12px;color:#555;">Trade-off: parallax scrolling effect and floating animation are gone.</div>
+      </div>
+    </div>
+    <div class="option" data-choice="keep-reduce" onclick="toggleSelect(this)">
+      <div class="letter">C</div>
+      <div class="content">
+        <h3>Keep parallax only — replace simple entrances</h3>
+        <p>Swap <code>GlassCard</code> entrance animations to CSS (via <code>AnimateOnScroll</code>), keep <code>ParallaxSection</code> in framer-motion. Reduces how much framer-motion does, and moves it to lazy chunk.</p>
+        <div style="margin-top:8px;font-size:12px;color:#555;">Middle ground: still has parallax scroll effect, less animation overhead.</div>
+      </div>
+    </div>
+  </div>
+</div>

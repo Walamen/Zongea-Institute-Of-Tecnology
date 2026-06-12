@@ -30,6 +30,8 @@ export default function WorkForce() {
               src={image}
               alt="ZIT instructor teaching"
               className="w-full h-full object-cover rounded-lg shadow-md"
+              loading="lazy"
+              decoding="async"
             />
           </div>
         </div>
@@ -44,6 +46,8 @@ export default function WorkForce() {
               src={img2}
               alt="ZIT students learning"
               className="w-full h-full object-cover rounded-md shadow-md"
+              loading="lazy"
+              decoding="async"
             />
           </div>
         </div>

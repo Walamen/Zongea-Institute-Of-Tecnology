@@ -1,0 +1,50 @@
+<h2>Unused Dependencies Found</h2>
+<p class="subtitle">Two very heavy libraries are installed but never imported anywhere in the source code. What should we do with them?</p>
+
+<div class="section">
+  <div style="display:grid;grid-template-columns:1fr 1fr;gap:16px;margin-top:8px;">
+    <div style="background:#fff1f1;border:1px solid #fed7d7;border-radius:8px;padding:18px;">
+      <div style="font-size:22px;margin-bottom:8px;">🧱</div>
+      <strong style="font-size:15px;">Three.js / ArchitectureScene</strong>
+      <p style="font-size:13px;color:#555;margin-top:6px;">The file <code>ArchitectureScene.tsx</code> exists and imports <code>@react-three/fiber</code>, <code>@react-three/drei</code>, and <code>three</code> — but it is <strong>never imported by any page or component</strong>.</p>
+      <div style="margin-top:8px;padding:8px;background:#ffe;border-radius:4px;font-size:12px;">
+        Bundle cost: <strong>~600KB–1.4MB</strong> being pulled into your build for nothing
+      </div>
+    </div>
+    <div style="background:#fff1f1;border:1px solid #fed7d7;border-radius:8px;padding:18px;">
+      <div style="font-size:22px;margin-bottom:8px;">📹</div>
+      <strong style="font-size:15px;">Daily.js (video conferencing)</strong>
+      <p style="font-size:13px;color:#555;margin-top:6px;"><code>@daily-co/daily-js</code> and <code>@daily-co/daily-react</code> are in <code>package.json</code> but <strong>never imported anywhere</strong> in the source.</p>
+      <div style="margin-top:8px;padding:8px;background:#ffe;border-radius:4px;font-size:12px;">
+        Bundle cost: <strong>~2MB</strong> sitting in node_modules doing nothing
+      </div>
+    </div>
+  </div>
+</div>
+
+<div class="section">
+  <h3>What should we do with these?</h3>
+  <div class="options">
+    <div class="option" data-choice="remove-both" onclick="toggleSelect(this)">
+      <div class="letter">A</div>
+      <div class="content">
+        <h3>Remove both completely</h3>
+        <p>Delete <code>ArchitectureScene.tsx</code>, uninstall Three.js and Daily.js from <code>package.json</code>. Instant ~2.5MB bundle reduction. Best choice if you have no near-term plans for them.</p>
+      </div>
+    </div>
+    <div class="option" data-choice="keep-threejs-remove-daily" onclick="toggleSelect(this)">
+      <div class="letter">B</div>
+      <div class="content">
+        <h3>Keep Three.js, remove Daily.js</h3>
+        <p>You plan to use the 3D scene somewhere soon. We'll lazy-load it in a separate chunk so it only loads when that page is visited. Daily.js goes entirely.</p>
+      </div>
+    </div>
+    <div class="option" data-choice="keep-both-lazy" onclick="toggleSelect(this)">
+      <div class="letter">C</div>
+      <div class="content">
+        <h3>Keep both, but lazy-load them</h3>
+        <p>You have plans for both. We'll isolate them into separate async chunks so they never affect initial page load — only loaded on demand.</p>
+      </div>
+    </div>
+  </div>
+</div>

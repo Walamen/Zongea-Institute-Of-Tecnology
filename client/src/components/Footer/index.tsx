@@ -25,7 +25,7 @@ const Footer = () => {
         {/* Logo */}
         <div className="flex lg:flex-1">
           <Link to="/" className="">
-            <img src={Logo} alt="" className="w-26 h-20" />
+            <img src={Logo} alt="" className="w-26 h-20" loading="lazy" decoding="async" />
           </Link>
         </div>
         

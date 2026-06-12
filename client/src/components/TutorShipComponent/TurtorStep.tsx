@@ -68,8 +68,10 @@ const TutorSteps: React.FC = () => {
           {/* Replace with your actual image */}
           <img
             src={img}
-            alt="Mentoring illustration" 
+            alt="Mentoring illustration"
             className="w-full max-w-sm rounded"
+            loading="lazy"
+            decoding="async"
           />
         </div>
       </div>

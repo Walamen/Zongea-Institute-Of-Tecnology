@@ -55,9 +55,11 @@ export default function TeachSomeone() {
     <div className="hidden md:flex w-full md:w-1/2 justify-center md:justify-end mt-10 md:mt-0">
       <div className="relative w-64 h-80 md:w-96 md:h-96 flex items-center justify-center">
         <img
-          src={image} 
+          src={image}
           alt="Mentor smiling"
           className="md:w-[94%] md:h-[110%] w-full object-cover relative top-5 left-3"
+          loading="lazy"
+          decoding="async"
         />
       </div>
     </div>

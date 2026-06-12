@@ -1,0 +1,147 @@
+<h2>Design — Part 1: Performance Architecture</h2>
+<p class="subtitle">Every change listed here, in the exact order they'll be implemented. Does this look right?</p>
+
+<div class="section">
+  <h3>1. Dead Code & Dependencies — Eliminate</h3>
+  <div style="background:#fff1f1;border-radius:8px;padding:16px;font-size:13px;">
+    <table style="width:100%;border-collapse:collapse;">
+      <thead>
+        <tr style="border-bottom:2px solid #fed7d7;">
+          <th style="text-align:left;padding:8px;">File / Package</th>
+          <th style="text-align:left;padding:8px;">Action</th>
+          <th style="text-align:left;padding:8px;">Savings</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr style="border-bottom:1px solid #fee2e2;">
+          <td style="padding:8px;"><code>ArchitectureScene.tsx</code></td>
+          <td style="padding:8px;">Delete file entirely</td>
+          <td style="padding:8px;color:#16a34a;">—</td>
+        </tr>
+        <tr style="border-bottom:1px solid #fee2e2;">
+          <td style="padding:8px;"><code>@react-three/fiber</code>, <code>@react-three/drei</code>, <code>three</code></td>
+          <td style="padding:8px;">Uninstall from package.json</td>
+          <td style="padding:8px;color:#16a34a;">~1.4MB</td>
+        </tr>
+        <tr style="border-bottom:1px solid #fee2e2;">
+          <td style="padding:8px;"><code>@daily-co/daily-js</code>, <code>@daily-co/daily-react</code></td>
+          <td style="padding:8px;">Uninstall from package.json</td>
+          <td style="padding:8px;color:#16a34a;">~2MB</td>
+        </tr>
+        <tr style="border-bottom:1px solid #fee2e2;">
+          <td style="padding:8px;"><code>framer-motion</code></td>
+          <td style="padding:8px;">Uninstall — remove all imports in 6 files</td>
+          <td style="padding:8px;color:#16a34a;">~140KB</td>
+        </tr>
+        <tr style="border-bottom:1px solid #fee2e2;">
+          <td style="padding:8px;"><code>animations/variants.ts</code></td>
+          <td style="padding:8px;">Delete file</td>
+          <td style="padding:8px;color:#16a34a;">—</td>
+        </tr>
+        <tr style="border-bottom:1px solid #fee2e2;">
+          <td style="padding:8px;"><code>AnimateOnScroll.tsx</code></td>
+          <td style="padding:8px;">Delete — all usages replaced with plain divs</td>
+          <td style="padding:8px;color:#16a34a;">—</td>
+        </tr>
+        <tr style="border-bottom:1px solid #fee2e2;">
+          <td style="padding:8px;"><code>ParallaxSection.tsx</code>, <code>FloatingElement.tsx</code></td>
+          <td style="padding:8px;">Delete files — remove usages</td>
+          <td style="padding:8px;color:#16a34a;">—</td>
+        </tr>
+        <tr>
+          <td style="padding:8px;"><code>GlassCard.tsx</code></td>
+          <td style="padding:8px;">Keep structure, replace <code>motion.div</code> → <code>div</code></td>
+          <td style="padding:8px;color:#16a34a;">—</td>
+        </tr>
+      </tbody>
+    </table>
+  </div>
+</div>
+
+<div class="section">
+  <h3>2. Payment Providers — Scope to Donation Route Only</h3>
+  <div style="display:grid;grid-template-columns:1fr 1fr;gap:12px;font-size:13px;">
+    <div style="background:#fff1f1;border-radius:8px;padding:14px;">
+      <strong style="color:#dc2626;">Before (loads on EVERY page)</strong>
+      <pre style="background:#1e1e1e;color:#d4d4d4;padding:10px;border-radius:6px;margin-top:8px;font-size:11px;overflow-x:auto;">// main.tsx
+&lt;Elements stripe={stripePromise}&gt;
+  &lt;App /&gt;          ← Stripe on all pages
+&lt;/Elements&gt;
+
+// App.tsx
+&lt;PayPalScriptProvider&gt;  ← PayPal on all pages
+  &lt;Elements stripe&gt;     ← Stripe again (duplicate!)
+    &lt;BrowserRouter&gt;...</pre>
+    </div>
+    <div style="background:#f0fdf4;border-radius:8px;padding:14px;">
+      <strong style="color:#16a34a;">After (loads only on /donate)</strong>
+      <pre style="background:#1e1e1e;color:#d4d4d4;padding:10px;border-radius:6px;margin-top:8px;font-size:11px;overflow-x:auto;">// main.tsx — clean, no Stripe
+createRoot(...).render(&lt;App /&gt;)
+
+// App.tsx — clean routing
+&lt;BrowserRouter&gt;...&lt;/BrowserRouter&gt;
+
+// DonationPage.tsx — self-contained ✓
+// (already has its own providers — no change needed)</pre>
+    </div>
+  </div>
+</div>
+
+<div class="section">
+  <h3>3. Images — Lazy Load + WebP</h3>
+  <div style="display:grid;grid-template-columns:1fr 1fr;gap:12px;font-size:13px;">
+    <div style="background:#eff6ff;border-radius:8px;padding:14px;">
+      <strong>Add <code>loading="lazy"</code> to all &lt;img&gt; tags</strong>
+      <p style="color:#555;margin-top:6px;">Every <code>&lt;img&gt;</code> in TutorshipSection, TTM, StudySucceed, Instructors, etc. gets <code>loading="lazy"</code> and <code>decoding="async"</code>. Browser only downloads images when they're near the viewport.</p>
+    </div>
+    <div style="background:#eff6ff;border-radius:8px;padding:14px;">
+      <strong>Install <code>vite-plugin-imagemin</code> for WebP</strong>
+      <p style="color:#555;margin-top:6px;">Adds a build step that converts all <code>.jpg</code>/<code>.jpeg</code>/<code>.png</code> assets to WebP automatically at build time. No manual work needed. 30–50% smaller image payloads.</p>
+    </div>
+  </div>
+</div>
+
+<div class="section">
+  <h3>4. Hero Slideshow — Fix GPU Performance</h3>
+  <div style="display:grid;grid-template-columns:1fr 1fr;gap:12px;font-size:13px;">
+    <div style="background:#fff1f1;border-radius:8px;padding:14px;">
+      <strong style="color:#dc2626;">Before — causes full repaint</strong>
+      <pre style="background:#1e1e1e;color:#d4d4d4;padding:10px;border-radius:6px;margin-top:8px;font-size:11px;">style={{
+  backgroundImage: `url(${images[currentIndex]})`,
+  transition: 'background-image 1s ease-in'
+  // ⚠ CSS can't transition background-image
+  // Triggers repaint on every slide change
+}}</pre>
+    </div>
+    <div style="background:#f0fdf4;border-radius:8px;padding:14px;">
+      <strong style="color:#16a34a;">After — GPU-accelerated opacity crossfade</strong>
+      <pre style="background:#1e1e1e;color:#d4d4d4;padding:10px;border-radius:6px;margin-top:8px;font-size:11px;">// Stack all images, toggle opacity
+{images.map((img, i) => (
+  &lt;img
+    key={i}
+    src={img}
+    className={`absolute inset-0 w-full h-full
+      object-cover transition-opacity duration-1000
+      ${i === currentIndex ? 'opacity-100' : 'opacity-0'}`}
+    loading={i === 0 ? 'eager' : 'lazy'}
+  /&gt;
+))}</pre>
+    </div>
+  </div>
+</div>
+
+<div class="section">
+  <h3>5. Suspense Boundaries + Vite Chunk Splitting</h3>
+  <div style="background:#faf5ff;border-radius:8px;padding:14px;font-size:13px;">
+    <ul style="margin:0;padding-left:16px;line-height:2;">
+      <li>Wrap all lazy routes in <code>&lt;Suspense fallback={&lt;div className="min-h-screen bg-primary" /&gt;}&gt;</code> in App.tsx</li>
+      <li>Configure <code>build.rollupOptions.output.manualChunks</code> in vite.config.ts to split <code>react-router-dom</code>, <code>@stripe/*</code>, <code>@paypal/*</code>, <code>swiper</code>, <code>axios</code> into separate async chunks</li>
+      <li>Remove <code>exclude: ['lucide-react']</code> from optimizeDeps (this was slowing dev mode)</li>
+    </ul>
+  </div>
+</div>
+
+<div style="background:#f0fdf4;border:2px solid #22c55e;border-radius:10px;padding:16px;text-align:center;margin-top:8px;">
+  <strong style="font-size:15px;">Does this performance design look right?</strong>
+  <p style="font-size:13px;color:#555;margin-top:6px;">Reply "yes" to proceed to Part 2 (Spacing System design), or tell me what to adjust.</p>
+</div>

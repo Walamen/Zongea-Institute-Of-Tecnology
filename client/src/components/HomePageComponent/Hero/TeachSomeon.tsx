@@ -30,6 +30,8 @@ export default function TeachSomeone() {
             src={image} // Ensure you replace this with the correct image path
             alt="Mentor smiling"
             className="md:w-[94%] md:h-100%] w-full object-cover relative top-2 left-3"
+            loading="lazy"
+            decoding="async"
           />
         </div>
       </div>

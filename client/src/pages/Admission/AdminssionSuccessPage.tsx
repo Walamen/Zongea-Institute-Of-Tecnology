@@ -90,6 +90,8 @@ const AdmissionSuccess = () => {
                 src={`${import.meta.env.VITE_BACKEND_URL}/${admission.applicantImage}`}
                 alt="Applicant"
                 className="w-32 h-32 rounded-lg object-cover mx-auto border"
+                loading="lazy"
+                decoding="async"
               />
             </div>
             <h1 className="text-3xl font-bold font-noto text-primary mb-2">Admission Submitted Successfully!</h1>

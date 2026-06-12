@@ -66,6 +66,8 @@ const Steps: React.FC = () => {
             src={img}
             alt="Mentoring illustration"
             className="w-full max-w-md rounded"
+            loading="lazy"
+            decoding="async"
           />
         </div>
       </div>

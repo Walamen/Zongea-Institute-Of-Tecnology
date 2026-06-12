@@ -155,7 +155,7 @@ return (
       <div className="grid md:grid-cols-3 gap-8">
       {donatorHighlight.map((highlight, index) => (
           <div key={index} className="flex flex-col justify-center items-center space-x-4 gap-2">
-            <img src={highlight.image} alt={highlight.description} className="w-40 h-40 rounded-full object-cover" />
+            <img src={highlight.image} alt={highlight.description} className="w-40 h-40 rounded-full object-cover" loading="lazy" decoding="async" />
           <div>
             <h3 className="font-noto text-md font-bold mb-2 text-primary">{highlight.description}</h3>
             <p className="font-roboto text-secondary-black text-sm">{highlight.statement}</p>
