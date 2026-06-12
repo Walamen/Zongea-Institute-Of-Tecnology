@@ -1,7 +1,7 @@
 import { useState, useEffect } from 'react';
 import { ArrowRight } from 'lucide-react';
 import { Link } from 'react-router-dom';
-import heroImg1 from '../../asset/images/herobg2.jpg';
+import heroImg1 from '../../asset/images/herobg2-opt.webp';
 import heroImg2 from '../../asset/images/study-group-african-people.jpg';
 import heroImg3 from '../../asset/images/Technology - Digital.jpg';
 
