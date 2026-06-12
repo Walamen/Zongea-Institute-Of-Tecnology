@@ -1,68 +1,54 @@
 import { useState } from "react";
-import AnimateOnScroll from "../../common/AnimateOnScroll";
 import image1 from "../../../asset/images/OT image .jpg";
 import image2 from "../../../asset/images/WhatsApp Image 2024-11-23 at 19.24.55_c7b5e29d.jpg";
-import image3 from "../../../asset/images/student_teaching.jpg"
+import image3 from "../../../asset/images/student_teaching.jpg";
+
 interface CardProps {
   imgSrc: string;
   title: string;
   description: string;
   linkText: string;
-  fullHeight?: boolean; // Optional prop
+  fullHeight?: boolean;
 }
 
 function FeaturesSection() {
   return (
     <div className="w-full h-auto bg-secondary px-0 py-32 md:px-28">
       <div className="container mx-auto">
-        <AnimateOnScroll animation="slideDown">
-          <h2 className="text-2xl font-noto font-bold text-primary mb-4 md:text-left">
-            Study at ZIT
-          </h2>
-        </AnimateOnScroll>
-        
-        <AnimateOnScroll animation="fadeIn" delay={200}>
-          <p className="text-gray-600 font-roboto mb-8 md:max-w-3xl md:text-left">
-            Unlock job-ready skills that open doors in today's tech landscape. No other
-            program matches the depth and impact of our hands-on training in technology,
-            design, and digital literacy — preparing you for success in the digital economy.
-          </p>
-        </AnimateOnScroll>
+        <h2 className="text-2xl font-noto font-bold text-primary mb-4 md:text-left">
+          Study at ZIT
+        </h2>
+
+        <p className="text-gray-600 font-roboto mb-8 md:max-w-3xl md:text-left">
+          Unlock job-ready skills that open doors in today's tech landscape. No other
+          program matches the depth and impact of our hands-on training in technology,
+          design, and digital literacy — preparing you for success in the digital economy.
+        </p>
 
         <div className="w-full h-[60%] grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6">
-          {/* Full Height Student Image with Hover Card */}
-          <AnimateOnScroll animation="slideUp" delay={400}>
-            <div className="relative w-full">
-              <HoverCard
-                imgSrc={image1}
-                title="Hands-On Learning"
-                description="Gain practical experience through interactive, project-based learning that prepares you for real-world challenges."
-                linkText="Explore courses  →"
-                fullHeight
-              />
-            </div>
-          </AnimateOnScroll>
-
-          {/* Personalized Support */}
-          <AnimateOnScroll animation="slideUp" delay={600}>
-            <FeatureCard
-              imgSrc={image2}
-              title="Personalized Support"
-              description="We provide tailored support to ensure your success. From one-on-one tutoring sessions to career guidance, we're here to solve any challenges you face, even the most complex topics."
-              linkText="Learn More About ZIT →"
+          <div className="relative w-full">
+            <HoverCard
+              imgSrc={image1}
+              title="Hands-On Learning"
+              description="Gain practical experience through interactive, project-based learning that prepares you for real-world challenges."
+              linkText="Explore courses  →"
+              fullHeight
             />
-          </AnimateOnScroll>
+          </div>
 
-          {/* Career-Ready Skills */}
-          <AnimateOnScroll animation="slideUp" delay={800}>
-            <FeatureCard
-              imgSrc={image3}
-              title="Career-Ready Skills"
-              description="Program curricula is designed to align with today's top employers' demand. You'll learn practical, hands-on skills that make you job-ready."
-              linkText="Start Your Journey →"
-              
-            />
-          </AnimateOnScroll>
+          <FeatureCard
+            imgSrc={image2}
+            title="Personalized Support"
+            description="We provide tailored support to ensure your success. From one-on-one tutoring sessions to career guidance, we're here to solve any challenges you face, even the most complex topics."
+            linkText="Learn More About ZIT →"
+          />
+
+          <FeatureCard
+            imgSrc={image3}
+            title="Career-Ready Skills"
+            description="Program curricula is designed to align with today's top employers' demand. You'll learn practical, hands-on skills that make you job-ready."
+            linkText="Start Your Journey →"
+          />
         </div>
       </div>
     </div>
